@@ -10,6 +10,7 @@ namespace Draft_Diamond_BD
         {
             InitializeComponent();
             buttonRegister.Click += buttonRegister_Click;
+            btnAuthorization.Click += btnAuthorization_Click;
         }
         private void buttonRegister_Click(object sender, EventArgs e)
         {
@@ -55,6 +56,12 @@ namespace Draft_Diamond_BD
             {
                 MessageBox.Show($"Ошибка регистрации: {ex.Message}","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void btnAuthorization_Click(object sender, EventArgs e)
+        {
+            Authorization authForm = new Authorization();
+            authForm.Show();
+            Hide();
         }
     }
 }

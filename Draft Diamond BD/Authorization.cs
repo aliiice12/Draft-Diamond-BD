@@ -11,6 +11,7 @@ namespace Draft_Diamond_BD
         {
             InitializeComponent();
             enter.Click += enter_Click;
+            btnRegister.Click += btnRegister_Click;
         }
         private void enter_Click(object sender, EventArgs e)
         {
@@ -38,6 +39,12 @@ namespace Draft_Diamond_BD
             {
                 MessageBox.Show("Неверный логин или пароль","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Registration regForm = new Registration(); 
+            regForm.Show(); 
+            Hide(); 
         }
     }
 }
