@@ -31,8 +31,8 @@ namespace Draft_Diamond_BD
             if (userFound)
             {
                 Warehouse warehouseForm = new Warehouse();
-                warehouseForm.Show();   // открыть форму склада
-                Hide(); // скрыть форму авторизации
+                warehouseForm.Show();  
+                Hide(); 
             }
             else
             {

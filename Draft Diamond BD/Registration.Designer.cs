@@ -38,13 +38,15 @@
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonRegister = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // registrationWorker
             // 
+            this.registrationWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registrationWorker.AutoSize = true;
             this.registrationWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.registrationWorker.Location = new System.Drawing.Point(92, 9);
+            this.registrationWorker.Location = new System.Drawing.Point(318, 51);
             this.registrationWorker.Name = "registrationWorker";
             this.registrationWorker.Size = new System.Drawing.Size(243, 32);
             this.registrationWorker.TabIndex = 0;
@@ -52,9 +54,10 @@
             // 
             // nameWorker
             // 
+            this.nameWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nameWorker.AutoSize = true;
             this.nameWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameWorker.Location = new System.Drawing.Point(26, 82);
+            this.nameWorker.Location = new System.Drawing.Point(177, 114);
             this.nameWorker.Name = "nameWorker";
             this.nameWorker.Size = new System.Drawing.Size(51, 20);
             this.nameWorker.TabIndex = 1;
@@ -62,9 +65,10 @@
             // 
             // surnameWorker
             // 
+            this.surnameWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.surnameWorker.AutoSize = true;
             this.surnameWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameWorker.Location = new System.Drawing.Point(26, 131);
+            this.surnameWorker.Location = new System.Drawing.Point(158, 163);
             this.surnameWorker.Name = "surnameWorker";
             this.surnameWorker.Size = new System.Drawing.Size(100, 20);
             this.surnameWorker.TabIndex = 2;
@@ -72,9 +76,10 @@
             // 
             // loginWorker
             // 
+            this.loginWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginWorker.AutoSize = true;
             this.loginWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginWorker.Location = new System.Drawing.Point(26, 180);
+            this.loginWorker.Location = new System.Drawing.Point(172, 212);
             this.loginWorker.Name = "loginWorker";
             this.loginWorker.Size = new System.Drawing.Size(70, 20);
             this.loginWorker.TabIndex = 3;
@@ -82,9 +87,10 @@
             // 
             // passwordWorker
             // 
+            this.passwordWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordWorker.AutoSize = true;
             this.passwordWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordWorker.Location = new System.Drawing.Point(26, 228);
+            this.passwordWorker.Location = new System.Drawing.Point(172, 260);
             this.passwordWorker.Name = "passwordWorker";
             this.passwordWorker.Size = new System.Drawing.Size(84, 20);
             this.passwordWorker.TabIndex = 4;
@@ -92,51 +98,70 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(143, 82);
+            this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxName.Location = new System.Drawing.Point(275, 104);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(327, 20);
+            this.textBoxName.Size = new System.Drawing.Size(325, 30);
             this.textBoxName.TabIndex = 5;
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(143, 131);
+            this.textBoxSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxSurname.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxSurname.Location = new System.Drawing.Point(276, 152);
             this.textBoxSurname.Multiline = true;
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(326, 19);
+            this.textBoxSurname.Size = new System.Drawing.Size(324, 31);
             this.textBoxSurname.TabIndex = 6;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(144, 180);
+            this.textBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxLogin.Location = new System.Drawing.Point(276, 204);
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(325, 19);
+            this.textBoxLogin.Size = new System.Drawing.Size(324, 27);
             this.textBoxLogin.TabIndex = 7;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(143, 228);
+            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxPassword.Location = new System.Drawing.Point(275, 251);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(324, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(324, 29);
             this.textBoxPassword.TabIndex = 8;
             // 
             // buttonRegister
             // 
+            this.buttonRegister.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRegister.Location = new System.Drawing.Point(98, 297);
+            this.buttonRegister.Location = new System.Drawing.Point(248, 410);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(312, 53);
+            this.buttonRegister.Size = new System.Drawing.Size(352, 53);
             this.buttonRegister.TabIndex = 9;
             this.buttonRegister.Text = "Зарегистрироваться ";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Location = new System.Drawing.Point(2, 3);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(165, 34);
+            this.btnRegister.TabIndex = 10;
+            this.btnRegister.Text = "Авторизоваться ";
+            this.btnRegister.UseVisualStyleBackColor = true;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1065, 514);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
@@ -166,5 +191,6 @@
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.Button btnRegister;
     }
 }
