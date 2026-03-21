@@ -8,5 +8,6 @@
         private System.Windows.Forms.Button bracelet;
         private System.Windows.Forms.Button necklace;
         private System.Windows.Forms.Button brooch;
+        private System.Windows.Forms.Label labelwarehouse;
     }
 }

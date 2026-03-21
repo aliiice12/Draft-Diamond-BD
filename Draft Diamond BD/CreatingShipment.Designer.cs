@@ -11,5 +11,10 @@
         private System.Windows.Forms.TextBox textBoxUnit;
         private System.Windows.Forms.TextBox textBoxQualitity;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Label Whome;
+        private System.Windows.Forms.Label Where;
+        private System.Windows.Forms.TextBox textBoxWhome;
+        private System.Windows.Forms.TextBox textBoxWhere;
+        private System.Windows.Forms.Button buttonShipment;
     }
 }

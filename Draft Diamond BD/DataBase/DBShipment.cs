@@ -1,15 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 namespace Draft_Diamond_BD.DataBase
 {
     public class DBShipment : DbContext
     {
         public DbSet<DBShipmentClass> Shipments { get; set; }
-
+        public DBShipment()
+        {
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=shipment.db");
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DBShipmentClass>(entity =>
@@ -19,8 +22,13 @@ namespace Draft_Diamond_BD.DataBase
                 entity.Property(s => s.Name);
                 entity.Property(s => s.Unit);
                 entity.Property(s => s.Quantity);
-            });
+                entity.Property(s => s.Destination);
+                entity.Property(s => s.Recipient);
+                });
+            }
         }
     }
-}
+
+
+
 

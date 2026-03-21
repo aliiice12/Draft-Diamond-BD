@@ -9,7 +9,7 @@ namespace Draft_Diamond_BD.DataBaseProducts
 
         public DBProducts()
         {
-            Database.EnsureCreated(); // Создает БД при первом запуске
+            Database.EnsureCreated(); 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -18,7 +18,7 @@ namespace Draft_Diamond_BD.DataBaseProducts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Entity<Product>().ToTable("Products");//таблица
+            modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(p => p.Id);
