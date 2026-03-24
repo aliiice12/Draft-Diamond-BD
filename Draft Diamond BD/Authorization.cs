@@ -33,28 +33,36 @@ namespace Draft_Diamond_BD
             var login = txtLogin.Text.Trim();
             var password = txtPassword.Text.Trim();
 
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Введите логин и пароль");
+                return;
+            }
+
             using (var db = new DBWorkers())
             {
-                var hashedPassword = HashPassword(password);
-                var user = db.Workers.FirstOrDefault(w => w.Login == login && w.Password == hashedPassword);
+                string hashedPassword = HashPassword(password);
+
+                var user = db.Workers
+                    .FirstOrDefault(w => w.Login == login && w.Password == hashedPassword);
 
                 if (user != null)
                 {
-                    var warehouseForm = new Warehouse(user.Login);
+                    Warehouse warehouseForm = new Warehouse(user.Login);
                     warehouseForm.Show();
                     Hide();
                 }
                 else
                 {
-                    MessageBox.Show(Resources.ErrorLogin);
+                    MessageBox.Show("Неверный логин или пароль");
                 }
             }
         }
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var regForm = new Registration(); 
-            regForm.Show(); 
-            Hide(); 
+            Registration regForm = new Registration();
+            regForm.Show();
+            Hide();
         }
     }
 }
