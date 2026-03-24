@@ -10,15 +10,14 @@ namespace Draft_Diamond_BD
 {
     public partial class DatabaseProduct : Form
     {
-        public DatabaseProduct()
+        public DatabaseProduct(string searchText)
         {
             InitializeComponent();
             CreateDataGridView();
             AddData();
-            RefreshDataGridView();
+            var products = GetProductsFromDatabase().Where(p => p.Name.Contains(searchText)).ToList();   
         }
-
-        public void CreateDataGridView()
+        private void CreateDataGridView()
         {
             dgvProducts = new DataGridView
             {
@@ -28,12 +27,11 @@ namespace Draft_Diamond_BD
             };
             dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
             dgvProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            Controls.Add(dgvProducts); // добавление таблицы на форму
+            Controls.Add(dgvProducts); 
         }
         private void InitializeComponent()
         {
             SuspendLayout();
-            //DatabaseProduct
             AutoScroll = true;
             ClientSize = new Size(413, 291);
             Name = "DatabaseProduct";
@@ -44,19 +42,11 @@ namespace Draft_Diamond_BD
         }
         private List<Product> GetProductsFromDatabase()
         {
-            using (DBProducts db = new DBProducts())
+            using (var db = new DBProducts())
             {
                 return db.Products.ToList();
             }
         }
-        private void RefreshDataGridView()
-        {
-            var products = GetProductsFromDatabase();
-            dgvProducts.DataSource = null;
-            dgvProducts.DataSource = products;
-            ConfigureDataGridViewColumns();
-        }
-
         private void ConfigureDataGridViewColumns()
         {
             if (dgvProducts.Columns.Count > 0)
@@ -82,21 +72,31 @@ namespace Draft_Diamond_BD
         }
         private void AddData()
         {
-            using (DBProducts db = new DBProducts())
+            using (var db = new DBProducts())
             {
                 if (!db.Products.Any())
                 {
                     db.Products.AddRange(new Product[]
                     {
-                    new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 8 },
-                    new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 1200m, Rest = 25 },
-                    new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 3500m, Rest = 12 },
-                    new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 3 }
+                    new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 800 },
+                    new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 12000m, Rest = 2500 },
+                    new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 35000m, Rest = 1200 },
+                    new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 300 },
+                     new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, Price = 5000m, Rest = 800 },
                     });
 
                     db.SaveChanges();
                 }
             }
+        }
+        /// <summary>
+        /// Метод для поиска информации в базе данных
+        /// </summary>
+        /// <param name="products"></param>
+        public void ShowSearchResult(List<Product> products)
+        {
+            dgvProducts.DataSource = products;
+            ConfigureDataGridViewColumns();
         }
     }
 }

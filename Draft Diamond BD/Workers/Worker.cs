@@ -3,13 +3,13 @@ namespace Draft_Diamond_BD.Workers
 {
     public  class Worker
     {
-        internal Guid Id { get; set; } //для работы с бд
-        internal string Login {  get; set; }
-        internal string Password { get; set; }
+        public Guid Id { get; set; }
+        public string Login {  get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public Jobs Job { get; set; }
-        public Worker() // для инициализации в бд
+        public Worker() 
         {
             Id = Guid.NewGuid(); 
         }
@@ -22,6 +22,10 @@ namespace Draft_Diamond_BD.Workers
             Surname = surname;
             Job = job;
         }
+        /// <summary>
+        /// Метод для выведения информации о рабочем 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Name} {Surname} - {Job}";

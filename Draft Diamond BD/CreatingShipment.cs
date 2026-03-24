@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-
 namespace Draft_Diamond_BD
 {
     public partial class CreatingShipment : Form
@@ -16,40 +15,34 @@ namespace Draft_Diamond_BD
         }
         private void LoadProducts()
         {
-            using (DBShipment db = new DBShipment())
+            using (var db = new DBShipment())
             {
                 listProducts.AutoGenerateColumns = true;
                 listProducts.DataSource = db.Shipments.ToList();
-
                 listProducts.Columns["Id"].HeaderText = "ID";
                 listProducts.Columns["Name"].HeaderText = "Название";
                 listProducts.Columns["Unit"].HeaderText = "Ед.изм.";
                 listProducts.Columns["Quantity"].HeaderText = "Количество";
                 listProducts.Columns["Destination"].HeaderText = "Куда";
                 listProducts.Columns["Recipient"].HeaderText = "Кому";
-                
             }
         }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string name = textBoxTitle.Text;
-            string unit = textBoxUnit.Text;
-            string quantityText = textBoxQualitity.Text;
-            string destination = textBoxWhere.Text;
-            string recipient = textBoxWhome.Text;
+            var name = textBoxTitle.Text;
+            var unit = textBoxUnit.Text;
+            var quantityText = textBoxQualitity.Text;
+            var destination = textBoxWhere.Text;
+            var recipient = textBoxWhome.Text;
             int quantity;
-            if (string.IsNullOrWhiteSpace(name) || //проверка поля нэйм
-                string.IsNullOrWhiteSpace(unit) ||
-                !int.TryParse(quantityText, out quantity))
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) ||!int.TryParse(quantityText, out quantity))
             {
-                MessageBox.Show("Введите корректные данные!");
+                MessageBox.Show(Resources.EnterTheCorrectInformation);
                 return;
             }
-
-            using (DBShipment db = new DBShipment())
+            using (var db = new DBShipment())
             {
-                DBShipmentClass shipment = new DBShipmentClass
+                var shipment = new DBShipmentClass
                 {
                     Name = name,
                     Unit = unit,
@@ -57,11 +50,9 @@ namespace Draft_Diamond_BD
                     Destination = destination,
                     Recipient = recipient
                 };
-
                 db.Shipments.Add(shipment);
                 db.SaveChanges();
             }
-
             LoadProducts();
             textBoxTitle.Clear();
             textBoxUnit.Clear();
@@ -124,7 +115,7 @@ namespace Draft_Diamond_BD
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.title.Location = new System.Drawing.Point(12, 68);
+            this.title.Location = new System.Drawing.Point(28, 70);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(97, 22);
             this.title.TabIndex = 2;
@@ -144,7 +135,7 @@ namespace Draft_Diamond_BD
             // 
             this.quantity.AutoSize = true;
             this.quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.quantity.Location = new System.Drawing.Point(11, 154);
+            this.quantity.Location = new System.Drawing.Point(28, 152);
             this.quantity.Name = "quantity";
             this.quantity.Size = new System.Drawing.Size(114, 22);
             this.quantity.TabIndex = 4;
@@ -192,7 +183,7 @@ namespace Draft_Diamond_BD
             // 
             this.Whome.AutoSize = true;
             this.Whome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Whome.Location = new System.Drawing.Point(12, 194);
+            this.Whome.Location = new System.Drawing.Point(46, 192);
             this.Whome.Name = "Whome";
             this.Whome.Size = new System.Drawing.Size(59, 22);
             this.Whome.TabIndex = 10;
@@ -202,7 +193,7 @@ namespace Draft_Diamond_BD
             // 
             this.Where.AutoSize = true;
             this.Where.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Where.Location = new System.Drawing.Point(13, 234);
+            this.Where.Location = new System.Drawing.Point(48, 234);
             this.Where.Name = "Where";
             this.Where.Size = new System.Drawing.Size(57, 22);
             this.Where.TabIndex = 11;
@@ -260,9 +251,6 @@ namespace Draft_Diamond_BD
             ((System.ComponentModel.ISupportInitialize)(this.listProducts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
-        
     }
 }

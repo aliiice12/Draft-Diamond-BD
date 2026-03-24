@@ -160,16 +160,16 @@
     <Compile Include="CreatingShipment.Designer.cs">
       <DependentUpon>CreatingShipment.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseProduct.cs">
+    <Compile Include="DataBase\DatabaseProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseProduct.Designer.cs">
+    <Compile Include="DataBase\DatabaseProduct.Designer.cs">
       <DependentUpon>DatabaseProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseWorker.cs">
+    <Compile Include="DataBase\DatabaseWorker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseWorker.Designer.cs">
+    <Compile Include="DataBase\DatabaseWorker.Designer.cs">
       <DependentUpon>DatabaseWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase\DBProducts.cs" />
@@ -182,6 +182,11 @@
     <Compile Include="DataBase\DBShipment.cs" />
     <Compile Include="DataBase\DBShipmentClass.cs" />
     <Compile Include="DataBase\DBWorker.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Products\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Registration.cs">
@@ -189,6 +194,12 @@
     </Compile>
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchProducts.Designer.cs">
+      <DependentUpon>SearchProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse.cs">
       <SubType>Form</SubType>
@@ -203,11 +214,15 @@
     <EmbeddedResource Include="CreatingShipment.resx">
       <DependentUpon>CreatingShipment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseProduct.resx">
+    <EmbeddedResource Include="DataBase\DatabaseProduct.resx">
       <DependentUpon>DatabaseProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -220,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchProducts.resx">
+      <DependentUpon>SearchProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>

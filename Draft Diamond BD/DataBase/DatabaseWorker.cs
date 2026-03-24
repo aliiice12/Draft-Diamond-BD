@@ -10,7 +10,6 @@ namespace Draft_Diamond_BD
     public partial class DatabaseWorker : Form
     {
         private DataGridView dgvWorkers;
-
         public DatabaseWorker()
         {
             InitializeComponent();
@@ -25,13 +24,11 @@ namespace Draft_Diamond_BD
                 Size = new Size(500, 500),
                 BackgroundColor = Color.White,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-
             };
             dgvWorkers.ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
             dgvWorkers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            Controls.Add(dgvWorkers); // добавление таблицы на форму
+            Controls.Add(dgvWorkers); 
         }
-
         private void InitializeComponent()
         {
             Size = new Size(800, 600);
@@ -39,14 +36,13 @@ namespace Draft_Diamond_BD
             Name = "DatabaseWorker";
             Text = "Работники склада";
         }
-        private List<Worker> GetWorkersFromDatabase()//метод получения информации о рабочих через бд
+        private List<Worker> GetWorkersFromDatabase()
         {
-            using (DBWorkers db = new DBWorkers())
+            using (var db = new DBWorkers())
             {
                 return db.Workers.ToList();
             }
         }
-
         private void RefreshDataGridView()
         {
             var workers = GetWorkersFromDatabase();

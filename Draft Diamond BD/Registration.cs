@@ -16,11 +16,10 @@ namespace Draft_Diamond_BD
         {
             try
             {
-                using (DBWorkers db = new DBWorkers())
+                using (var db = new DBWorkers())
                 {
-                    bool loginExists = false;
-
-                    foreach (Worker w in db.Workers)
+                    var loginExists = false;
+                    foreach (var w in db.Workers)
                     {
                         if (w.Login == textBoxLogin.Text)
                         {
@@ -30,36 +29,34 @@ namespace Draft_Diamond_BD
                     }
                     if (loginExists)
                     {
-                        MessageBox.Show("Такой логин уже существует");
+                        MessageBox.Show(Resources.SuchLogin);
                         return;
                     }
-                    Worker newWorker = new Worker()
+                    var newWorker = new Worker()
                     {
                         Id = Guid.NewGuid(),
                         Name = textBoxName.Text,
                         Surname = textBoxSurname.Text,
                         Login = textBoxLogin.Text,
                         Password = textBoxPassword.Text,
-                        Job = Jobs.Кладовщик 
+                        Job = Jobs.Storekeeper
                     };
-
                     db.Workers.Add(newWorker);
                     db.SaveChanges();
-
-                    MessageBox.Show("Пользователь успешно зарегистрирован!","Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Authorization authForm = new Authorization();
+                    MessageBox.Show(Resources.UserRegistreted,Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var authForm = new Authorization();
                     authForm.Show();
-                    Hide(); // закрываем форму регистрации
+                    Hide(); 
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка регистрации: {ex.Message}","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.RegistrationError,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnAuthorization_Click(object sender, EventArgs e)
         {
-            Authorization authForm = new Authorization();
+            var authForm = new Authorization();
             authForm.Show();
             Hide();
         }

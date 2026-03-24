@@ -7,23 +7,14 @@ namespace Draft_Diamond_BD.DataBase
     public class DBWorkers : DbContext
     {
         public DbSet<Worker> Workers { get; set; }
-
         public DBWorkers()
         {
-            try
-            {
-                Database.EnsureCreated();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка создания БД: {ex.Message}");
-            }
+            Database.EnsureCreated();   
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=worker.db");
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Worker>(entity =>

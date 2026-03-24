@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStripWarehouseProducts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="Bracelet" xml:space="preserve">
+    <value>Браслет</value>
+  </data>
+  <data name="Earring" xml:space="preserve">
+    <value>Серьги</value>
+  </data>
+  <data name="EnterProductName" xml:space="preserve">
+    <value>Введите название товара</value>
+  </data>
+  <data name="EnterTheCorrectInformation" xml:space="preserve">
+    <value>Введите корректные данные</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ErrorLogin" xml:space="preserve">
+    <value>Неверный логин или пароль</value>
+  </data>
+  <data name="Necklace" xml:space="preserve">
+    <value>Колье</value>
+  </data>
+  <data name="RegistrationError" xml:space="preserve">
+    <value>Ошибка регистрации</value>
+  </data>
+  <data name="Ring" xml:space="preserve">
+    <value>Кольцо</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Успех</value>
+  </data>
+  <data name="SuchLogin" xml:space="preserve">
+    <value>Такой логин уже существует</value>
+  </data>
+  <data name="UserRegistreted" xml:space="preserve">
+    <value>Пользователь успешно зарегистрирован</value>
+  </data>
+  <data name="Brooch" xml:space="preserve">
+    <value>Брошь</value>
+  </data>
 </root>

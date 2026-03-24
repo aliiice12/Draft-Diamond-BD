@@ -6,7 +6,6 @@ namespace Draft_Diamond_BD.DataBaseProducts
     public class DBProducts : DbContext
     {
         public DbSet<Product> Products { get; set; }
-
         public DBProducts()
         {
             Database.EnsureCreated(); 

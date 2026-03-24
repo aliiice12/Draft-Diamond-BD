@@ -7,13 +7,14 @@ namespace Draft_Diamond_BD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Authorization());
+            Application.Run(new Authorization());
             //Application.Run(new Registration());
-            Application.Run(new Warehouse());
+            //Application.Run(new Warehouse());
             //Application.Run(new CreatingShipment());
+            //Application.Run(new SearchProducts());
             //Application.Run(new DatabaseProduct());
             //Application.Run(new DatabaseWorker());
-            
+
 
 
         }

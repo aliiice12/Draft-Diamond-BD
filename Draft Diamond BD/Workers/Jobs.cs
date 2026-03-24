@@ -2,7 +2,7 @@
 {
     public enum Jobs
     {
-        Кладовщик,
-        Администратор 
+        Storekeeper,
+        Administrator
     }
 }
