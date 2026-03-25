@@ -99,49 +99,62 @@
             // textBoxName
             // 
             this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxName.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxName.Location = new System.Drawing.Point(327, 133);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(327, 20);
             this.textBoxName.TabIndex = 5;
+            this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxSurname
             // 
             this.textBoxSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxSurname.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxSurname.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxSurname.Location = new System.Drawing.Point(327, 182);
             this.textBoxSurname.Multiline = true;
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(326, 19);
             this.textBoxSurname.TabIndex = 6;
+            this.textBoxSurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxLogin
             // 
             this.textBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxLogin.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxLogin.Location = new System.Drawing.Point(328, 231);
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(325, 19);
             this.textBoxLogin.TabIndex = 7;
+            this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxPassword
             // 
             this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxPassword.Location = new System.Drawing.Point(327, 279);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(324, 20);
             this.textBoxPassword.TabIndex = 8;
+            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonRegister
             // 
             this.buttonRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRegister.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRegister.Location = new System.Drawing.Point(282, 348);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(312, 53);
             this.buttonRegister.TabIndex = 9;
             this.buttonRegister.Text = "Зарегистрироваться ";
-            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.UseVisualStyleBackColor = false;
             // 
             // btnAuthorization
             // 

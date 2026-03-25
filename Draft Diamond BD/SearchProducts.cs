@@ -59,7 +59,7 @@ namespace Draft_Diamond_BD
             // 
             this.textSearch.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textSearch.ForeColor = System.Drawing.SystemColors.Menu;
+            this.textSearch.ForeColor = System.Drawing.SystemColors.Window;
             this.textSearch.Location = new System.Drawing.Point(155, 116);
             this.textSearch.Multiline = true;
             this.textSearch.Name = "textSearch";
