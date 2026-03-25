@@ -21,28 +21,35 @@
             // enter
             // 
             this.enter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.enter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.enter.Location = new System.Drawing.Point(331, 242);
             this.enter.Name = "enter";
             this.enter.Size = new System.Drawing.Size(128, 47);
             this.enter.TabIndex = 0;
             this.enter.Text = "Войти";
-            this.enter.UseVisualStyleBackColor = true;
+            this.enter.UseVisualStyleBackColor = false;
             // 
             // txtLogin
             // 
             this.txtLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtLogin.ForeColor = System.Drawing.SystemColors.Window;
             this.txtLogin.Location = new System.Drawing.Point(358, 158);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(150, 22);
             this.txtLogin.TabIndex = 1;
+            this.txtLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtPassword.ForeColor = System.Drawing.SystemColors.Window;
             this.txtPassword.Location = new System.Drawing.Point(358, 202);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(150, 22);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // autorizatoinWorker
             // 

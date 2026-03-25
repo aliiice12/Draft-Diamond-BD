@@ -144,29 +144,35 @@ namespace Draft_Diamond_BD
             // textBoxTitle
             // 
             this.textBoxTitle.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxTitle.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxTitle.Location = new System.Drawing.Point(152, 70);
             this.textBoxTitle.Multiline = true;
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(170, 26);
             this.textBoxTitle.TabIndex = 5;
+            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxUnit
             // 
             this.textBoxUnit.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxUnit.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxUnit.Location = new System.Drawing.Point(152, 110);
             this.textBoxUnit.Multiline = true;
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(170, 25);
             this.textBoxUnit.TabIndex = 6;
+            this.textBoxUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxQualitity
             // 
             this.textBoxQualitity.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxQualitity.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxQualitity.Location = new System.Drawing.Point(152, 154);
             this.textBoxQualitity.Multiline = true;
             this.textBoxQualitity.Name = "textBoxQualitity";
             this.textBoxQualitity.Size = new System.Drawing.Size(170, 22);
             this.textBoxQualitity.TabIndex = 7;
+            this.textBoxQualitity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonAdd
             // 
@@ -202,20 +208,23 @@ namespace Draft_Diamond_BD
             // textBoxWhome
             // 
             this.textBoxWhome.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxWhome.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxWhome.Location = new System.Drawing.Point(152, 194);
             this.textBoxWhome.Name = "textBoxWhome";
             this.textBoxWhome.Size = new System.Drawing.Size(170, 22);
             this.textBoxWhome.TabIndex = 12;
+            this.textBoxWhome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxWhere
             // 
             this.textBoxWhere.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBoxWhere.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxWhere.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxWhere.Location = new System.Drawing.Point(152, 234);
             this.textBoxWhere.Multiline = true;
             this.textBoxWhere.Name = "textBoxWhere";
             this.textBoxWhere.Size = new System.Drawing.Size(170, 22);
             this.textBoxWhere.TabIndex = 13;
+            this.textBoxWhere.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonShipment
             // 
@@ -251,6 +260,7 @@ namespace Draft_Diamond_BD
             ((System.ComponentModel.ISupportInitialize)(this.listProducts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }
