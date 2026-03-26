@@ -1,8 +1,7 @@
 ﻿using Draft_Diamond_BD.DataBase;
+using Draft_Diamond_BD.Workers;
 using System;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Draft_Diamond_BD
@@ -12,56 +11,60 @@ namespace Draft_Diamond_BD
         public Authorization()
         {
             InitializeComponent();
+            EnsureAdminsExist();
             enter.Click += enter_Click;
             btnRegister.Click += btnRegister_Click;
-        }
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-
-                foreach (byte b in bytes)
-                    builder.Append(b.ToString("x2"));
-
-                return builder.ToString();
-            }
         }
         private void enter_Click(object sender, EventArgs e)
         {
             var login = txtLogin.Text.Trim();
             var password = txtPassword.Text.Trim();
 
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Введите логин и пароль");
-                return;
-            }
-
             using (var db = new DBWorkers())
             {
-                string hashedPassword = HashPassword(password);
-
-                var user = db.Workers
-                    .FirstOrDefault(w => w.Login == login && w.Password == hashedPassword);
+                var user = db.Workers.FirstOrDefault(w => w.Login == login && w.Password == password);
 
                 if (user != null)
                 {
-                    Warehouse warehouseForm = new Warehouse(user.Login);
-                    warehouseForm.Show();
+                    if (user.Job == Jobs.Administrator)
+                    {
+                        var warehouseAdminForm = new WarehouseAdmin(user.Login);
+                        warehouseAdminForm.Show();
+                    }
+                    else
+                    {
+                        var warehouseStorekeeperForm = new WarehouseStorekeeper(user.Login);
+                        warehouseStorekeeperForm.Show();
+                    }
                     Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль");
+                    MessageBox.Show(Resources.ErrorLogin);
                 }
+            }
+        }
+        private void EnsureAdminsExist()
+        {
+            using (var db = new DBWorkers())
+            {
+                if (!db.Workers.Any(w => w.Login == "789"))
+                {
+                    db.Workers.Add(new Admin(Guid.NewGuid(), "789", "888", "Admin", "One"));
+                }
+
+                if (!db.Workers.Any(w => w.Login == "012"))
+                {
+                    db.Workers.Add(new Admin(Guid.NewGuid(), "012", "8642", "Admin", "Two"));
+                }
+
+                db.SaveChanges();
             }
         }
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Registration regForm = new Registration();
-            regForm.Show();
+            var registerform = new Registration();
+            registerform.Show();
             Hide();
         }
     }

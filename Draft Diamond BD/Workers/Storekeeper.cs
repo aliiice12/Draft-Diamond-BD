@@ -8,14 +8,5 @@ namespace Draft_Diamond_BD.Workers
         { 
             Id = Guid.NewGuid();
         }
-       /// <summary>
-       /// Метод для выведения информации о кладовщике
-       /// </summary>
-       /// <returns></returns>
-        public override string ToString()
-        {
-            return $"login - {Login}, password - {Password}, name - {Name}, surname - {Surname}, job - Кладовщик";
-        }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Draft_Diamond_BD.DataBase;
 using Draft_Diamond_BD.Workers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace Draft_Diamond_BD
     public partial class DatabaseWorker : Form
     {
         private DataGridView dgvWorkers;
+
         public DatabaseWorker()
         {
             InitializeComponent();
             CreateDataGridView();
+            EnsureAdminsExist();
             RefreshDataGridView();
         }
         private void CreateDataGridView()
@@ -27,7 +30,7 @@ namespace Draft_Diamond_BD
             };
             dgvWorkers.ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
             dgvWorkers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            Controls.Add(dgvWorkers); 
+            Controls.Add(dgvWorkers);
         }
         private void InitializeComponent()
         {
@@ -48,7 +51,23 @@ namespace Draft_Diamond_BD
             var workers = GetWorkersFromDatabase();
             dgvWorkers.DataSource = null;
             dgvWorkers.DataSource = workers;
+        }
+        private void EnsureAdminsExist()
+        {
+            using (var db = new DBWorkers())
+            {
+                if (!db.Workers.Any(w => w.Login == "789"))
+                {
+                    db.Workers.Add(new Admin(Guid.NewGuid(), "789", "888", "Admin", "One"));
+                }
 
+                if (!db.Workers.Any(w => w.Login == "012"))
+                {
+                    db.Workers.Add(new Admin(Guid.NewGuid(), "012", "8642", "Admin", "Two"));
+                }
+
+                db.SaveChanges();
+            }
         }
     }
 }
