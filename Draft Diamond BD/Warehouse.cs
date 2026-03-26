@@ -86,7 +86,7 @@ namespace Draft_Diamond_BD
             this.labelwarehouse = new System.Windows.Forms.Label();
             this.menuStripWarehouseProducts = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemCreatingShipment = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItemSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItemSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItemFilter = new System.Windows.Forms.ToolStripMenuItem();
             this.весьСкладToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кольцоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,12 +96,12 @@ namespace Draft_Diamond_BD
             this.брошьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItemOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.labelLogin = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStripAdmin = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripWarehouseProducts.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelwarehouse
@@ -120,7 +120,7 @@ namespace Draft_Diamond_BD
             this.menuStripWarehouseProducts.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripWarehouseProducts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemCreatingShipment,
-            this.searchToolStripMenuItemSearch,
+            this.addToolStripMenuItemSearch,
             this.filterToolStripMenuItemFilter,
             this.exitToolStripMenuItemOutput});
             this.menuStripWarehouseProducts.Location = new System.Drawing.Point(0, 28);
@@ -135,11 +135,11 @@ namespace Draft_Diamond_BD
             this.toolStripMenuItemCreatingShipment.Size = new System.Drawing.Size(140, 24);
             this.toolStripMenuItemCreatingShipment.Text = "Создать отгрузку";
             // 
-            // searchToolStripMenuItemSearch
+            // addToolStripMenuItemSearch
             // 
-            this.searchToolStripMenuItemSearch.Name = "searchToolStripMenuItemSearch";
-            this.searchToolStripMenuItemSearch.Size = new System.Drawing.Size(66, 24);
-            this.searchToolStripMenuItemSearch.Text = "Поиск";
+            this.addToolStripMenuItemSearch.Name = "addToolStripMenuItemSearch";
+            this.addToolStripMenuItemSearch.Size = new System.Drawing.Size(66, 24);
+            this.addToolStripMenuItemSearch.Text = "Поиск";
             // 
             // filterToolStripMenuItemFilter
             // 
@@ -207,18 +207,18 @@ namespace Draft_Diamond_BD
             this.labelLogin.TabIndex = 2;
             this.labelLogin.Text = "label1";
             // 
-            // menuStrip1
+            // menuStripAdmin
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripAdmin.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStripAdmin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
             this.createToolStripMenuItem,
             this.deleteToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(732, 28);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripAdmin.Location = new System.Drawing.Point(0, 0);
+            this.menuStripAdmin.Name = "menuStripAdmin";
+            this.menuStripAdmin.Size = new System.Drawing.Size(732, 28);
+            this.menuStripAdmin.TabIndex = 3;
+            this.menuStripAdmin.Text = "menuStrip1";
             // 
             // addToolStripMenuItem
             // 
@@ -244,13 +244,13 @@ namespace Draft_Diamond_BD
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelwarehouse);
             this.Controls.Add(this.menuStripWarehouseProducts);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripAdmin);
             this.MainMenuStrip = this.menuStripWarehouseProducts;
             this.Name = "Warehouse";
             this.menuStripWarehouseProducts.ResumeLayout(false);
             this.menuStripWarehouseProducts.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripAdmin.ResumeLayout(false);
+            this.menuStripAdmin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

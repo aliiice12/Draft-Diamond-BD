@@ -95,8 +95,8 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.31.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.31\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.4.976, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
@@ -110,7 +110,9 @@
     <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.0.4.976, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.0.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -154,6 +156,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForm\AddCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\AddCard.Designer.cs">
+      <DependentUpon>AddCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeForm\ChangeCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeForm\ChangeCard.Designer.cs">
+      <DependentUpon>ChangeCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreatingShipment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +202,18 @@
     <Compile Include="DataBase\DBShipment.cs" />
     <Compile Include="DataBase\DBShipmentClass.cs" />
     <Compile Include="DataBase\DBWorker.cs" />
+    <Compile Include="Delete\DeleteCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delete\DeleteCard.Designer.cs">
+      <DependentUpon>DeleteCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryShipment.Designer.cs">
+      <DependentUpon>HistoryShipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,22 +227,37 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchProducts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SearchProducts.Designer.cs">
-      <DependentUpon>SearchProducts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Warehouse.cs">
+	  <SubType>Form</SubType>
+    </Compile>
+	<Compile Include="Warehouse.Designer.cs">
+	  <SubType>Warehouse.cs</SubType>
+    </Compile>
+    <Compile Include="SearchCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse.Designer.cs">
-      <DependentUpon>Warehouse.cs</DependentUpon>
+    <Compile Include="SearchCard.Designer.cs">
+      <DependentUpon>SearchCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseAdmin.Designer.cs">
+      <DependentUpon>WarehouseAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Workers\Admin.cs" />
     <Compile Include="Workers\Jobs.cs" />
     <Compile Include="Workers\Storekeeper.cs" />
     <Compile Include="Workers\Worker.cs" />
+    <EmbeddedResource Include="AddForm\AddCard.resx">
+      <DependentUpon>AddCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeForm\ChangeCard.resx">
+      <DependentUpon>ChangeCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreatingShipment.resx">
       <DependentUpon>CreatingShipment.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +266,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delete\DeleteCard.resx">
+      <DependentUpon>DeleteCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryShipment.resx">
+      <DependentUpon>HistoryShipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -236,13 +289,15 @@
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchProducts.resx">
-      <DependentUpon>SearchProducts.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="SearchCard.resx">
+      <DependentUpon>SearchCard.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="WarehouseAdmin.resx">
+      <DependentUpon>WarehouseAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -258,11 +313,11 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
   </Target>
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
 </Project>
