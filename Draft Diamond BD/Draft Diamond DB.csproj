@@ -180,16 +180,16 @@
     <Compile Include="CreatingShipment.Designer.cs">
       <DependentUpon>CreatingShipment.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseProduct.cs">
+    <Compile Include="DataBase\DatabaseProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseProduct.Designer.cs">
+    <Compile Include="DataBase\DatabaseProduct.Designer.cs">
       <DependentUpon>DatabaseProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseWorker.cs">
+    <Compile Include="DataBase\DatabaseWorker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseWorker.Designer.cs">
+    <Compile Include="DataBase\DatabaseWorker.Designer.cs">
       <DependentUpon>DatabaseWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase\DBProducts.cs" />
@@ -202,8 +202,6 @@
     <Compile Include="DataBase\DBShipment.cs" />
     <Compile Include="DataBase\DBShipmentClass.cs" />
     <Compile Include="DataBase\DBWorker.cs" />
-<<<<<<< Updated upstream
-=======
     <Compile Include="Delete\DeleteCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,7 +219,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
->>>>>>> Stashed changes
     <Compile Include="Products\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Registration.cs">
@@ -230,9 +227,12 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
     <Compile Include="Warehouse.cs">
-=======
+	  <SubType>Form</SubType>
+    </Compile>
+	<Compile Include="Warehouse.Designer.cs">
+	  <SubType>Warehouse.cs</SubType>
+    </Compile>
     <Compile Include="SearchCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,7 +240,6 @@
       <DependentUpon>SearchCard.cs</DependentUpon>
     </Compile>
     <Compile Include="WarehouseAdmin.cs">
->>>>>>> Stashed changes
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WarehouseAdmin.Designer.cs">
@@ -262,14 +261,12 @@
     <EmbeddedResource Include="CreatingShipment.resx">
       <DependentUpon>CreatingShipment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseProduct.resx">
+    <EmbeddedResource Include="DataBase\DatabaseProduct.resx">
       <DependentUpon>DatabaseProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< Updated upstream
-=======
     <EmbeddedResource Include="Delete\DeleteCard.resx">
       <DependentUpon>DeleteCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,7 +277,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
->>>>>>> Stashed changes
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -293,16 +289,14 @@
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< Updated upstream
     <EmbeddedResource Include="Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
-=======
+	</EmbeddedResource>
     <EmbeddedResource Include="SearchCard.resx">
       <DependentUpon>SearchCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseAdmin.resx">
       <DependentUpon>WarehouseAdmin.cs</DependentUpon>
->>>>>>> Stashed changes
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

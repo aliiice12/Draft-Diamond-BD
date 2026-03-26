@@ -15,12 +15,12 @@ namespace Draft_Diamond_BD
         {
             if (string.IsNullOrWhiteSpace(textBoxId.Text))
             {
-                MessageBox.Show(Resources.EnterID);
+                MessageBox.Show("Resources.EnterID");
                 return;
             }
             if (!Guid.TryParse(textBoxId.Text, out Guid productId))
             {
-                MessageBox.Show(Resources.GuidID);
+                MessageBox.Show("Resources.GuidID");
                 return;
             }
             using (var db = new DBProducts())
@@ -29,12 +29,12 @@ namespace Draft_Diamond_BD
 
                 if (product == null)
                 {
-                    MessageBox.Show(Resources.NotDatabase);
+                    MessageBox.Show("Resources.NotDatabase");
                     return;
                 }
                 db.Products.Remove(product);
                 db.SaveChanges();
-                MessageBox.Show(Resources.ProductDelete);
+                MessageBox.Show("Resources.ProductDelete");
                 textBoxId.Clear();
             }
         }

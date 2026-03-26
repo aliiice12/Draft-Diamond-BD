@@ -16,12 +16,12 @@ namespace Draft_Diamond_BD
         {
             if (string.IsNullOrWhiteSpace(textBoxName.Text) ||string.IsNullOrWhiteSpace(textBoxUnit.Text) ||string.IsNullOrWhiteSpace(textBoxPrice.Text))
             {
-                MessageBox.Show(Resources.FillFields, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Resources.FillFields", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!decimal.TryParse(textBoxPrice.Text, out decimal totalPurchase))
             {
-                MessageBox.Show(Resources.Price, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Resources.Price", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new DBProducts())
@@ -29,7 +29,7 @@ namespace Draft_Diamond_BD
                 var productFromDb = db.Products.FirstOrDefault(p => p.Name == textBoxName.Text);
                 if (productFromDb == null)
                 {
-                    MessageBox.Show(Resources.NotDatabase, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Resources.NotDatabase", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 decimal unitPrice = productFromDb.Price;
@@ -38,7 +38,7 @@ namespace Draft_Diamond_BD
                 productFromDb.Rest += count;
                 db.SaveChanges();
             }
-            MessageBox.Show(Resources.AddProduct, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Resources.AddProduct", Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             textBoxName.Clear();
             textBoxUnit.Clear();
             textBoxPrice.Clear();
@@ -46,7 +46,7 @@ namespace Draft_Diamond_BD
         
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Resources.AddProduct, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Resources.AddProduct", Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

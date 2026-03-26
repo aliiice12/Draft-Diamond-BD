@@ -1,6 +1,6 @@
 ﻿namespace Draft_Diamond_BD
 {
-    partial class SearchCard
+    partial class SearchProducts
     {
         private System.Windows.Forms.Label labelSearch;
         private System.Windows.Forms.Button buttonSearch;

@@ -20,7 +20,7 @@ namespace Draft_Diamond_BD
             var input = textBoxName.Text.Trim();
             if (string.IsNullOrEmpty(input))
             {
-                MessageBox.Show(Resources.NameProduct, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Resources.NameProduct", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new DBProducts())
