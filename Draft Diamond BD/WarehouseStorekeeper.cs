@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Draft_Diamond_BD.SearchCard;
 namespace Draft_Diamond_BD
 {
     public partial class WarehouseStorekeeper : Form
@@ -43,7 +42,17 @@ namespace Draft_Diamond_BD
         {
             using (var db = new DBProducts())
             {
-                var products = db.Products.Where(p => p.Name == category).ToList();
+                var products = db.Products
+                    .Where(p => p.Name.Contains(category))
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.Name,
+                        p.Count,
+                        p.Price,
+                        p.Rest
+                    })
+                    .ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
             }
@@ -52,7 +61,16 @@ namespace Draft_Diamond_BD
         {
             using (var db = new DBProducts())
             {
-                var products = db.Products.ToList();
+                var products = db.Products
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.Name,
+                        p.Count,
+                        p.Price,
+                        p.Rest
+                    })
+                    .ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
             }

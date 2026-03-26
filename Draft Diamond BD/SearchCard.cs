@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Draft_Diamond_BD
 {
-    public partial class SearchProducts : Form
+    public partial class SearchCard : Form
     {
-        public SearchProducts()
+        public SearchCard()
         {
            InitializeComponent();
             buttonSearch.Click += ButtonSearch_Click;

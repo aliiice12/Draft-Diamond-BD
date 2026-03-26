@@ -2,8 +2,6 @@
 using Draft_Diamond_BD.Workers;
 using System;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 namespace Draft_Diamond_BD
 {
@@ -15,19 +13,6 @@ namespace Draft_Diamond_BD
             buttonRegister.Click += btnCreate_Click;
             btnAuthorization.Click += btnAuthorization_Click;
         }
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-
-                foreach (byte b in bytes)
-                    builder.Append(b.ToString("x2"));
-
-                return builder.ToString();
-            }
-        }
         private void btnCreate_Click(object sender, EventArgs e)
         {
             var login = textBoxLogin.Text.Trim();
@@ -35,32 +20,27 @@ namespace Draft_Diamond_BD
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Введите логин и пароль");
+                MessageBox.Show(Resources.EnterTheCorrectInformation);
                 return;
             }
-
             using (var db = new DBWorkers())
             {
                 var user = db.Workers.FirstOrDefault(w => w.Login == login);
                 if (user != null)
                 {
-                    MessageBox.Show("Такой пользователь уже существует");
+                    MessageBox.Show(Resources.SuchLogin);
                     return;
                 }
-
-                string hashedPassword = HashPassword(password);
-
                 var newWorker = new Worker()
                 {
                     Login = login,
-                    Password = hashedPassword
+                    Password = password
                 };
 
                 db.Workers.Add(newWorker);
                 db.SaveChanges();
             }
-
-            MessageBox.Show("Регистрация успешна");
+            MessageBox.Show(Resources.Success);
             new Authorization().Show();
             Hide();
         }

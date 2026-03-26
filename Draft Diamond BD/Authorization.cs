@@ -22,7 +22,7 @@ namespace Draft_Diamond_BD
 
             using (var db = new DBWorkers())
             {
-                var user = db.Workers.FirstOrDefault(w => w.Login == login && w.Password == password);
+                var user = db.Workers.FirstOrDefault(w => w.Login == login);
 
                 if (user != null)
                 {

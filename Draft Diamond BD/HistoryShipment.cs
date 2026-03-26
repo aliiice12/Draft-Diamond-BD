@@ -38,7 +38,7 @@ namespace Draft_Diamond_BD
         }
         private void SearchtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var searchform = new SearchProducts();
+            var searchform = new SearchCard();
             searchform.Show();
             Hide();
         }
