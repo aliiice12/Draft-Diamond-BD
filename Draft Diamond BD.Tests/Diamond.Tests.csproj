@@ -164,9 +164,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Draft Diamond BD\Draft Diamond DB.csproj">
+    <ProjectReference Include="..\Draft Diamond BD\Diamond.csproj">
       <Project>{6013f190-6ca1-47c4-85f6-38718a478ff2}</Project>
-      <Name>Draft Diamond DB</Name>
+      <Name>Diamond</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

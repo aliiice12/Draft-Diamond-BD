@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draft Diamond DB", "Draft Diamond BD\Draft Diamond DB.csproj", "{6013F190-6CA1-47C4-85F6-38718A478FF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diamond", "Draft Diamond BD\Diamond.csproj", "{6013F190-6CA1-47C4-85F6-38718A478FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draft Diamond BD.Tests", "Draft Diamond BD.Tests\Draft Diamond BD.Tests.csproj", "{3AA2AAE3-B510-4EC2-8FEC-F481B89C4FAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diamond.Tests", "Draft Diamond BD.Tests\Diamond.Tests.csproj", "{3AA2AAE3-B510-4EC2-8FEC-F481B89C4FAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
