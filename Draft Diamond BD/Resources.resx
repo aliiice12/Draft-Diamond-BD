@@ -159,4 +159,55 @@
   <data name="DeleteProduct" xml:space="preserve">
     <value>Товар удалён</value>
   </data>
+  <data name="FillFields" xml:space="preserve">
+    <value>Заполни поля</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Неправильно введена цена товара</value>
+  </data>
+  <data name="NotDatabase" xml:space="preserve">
+    <value>Товара нет в базе данных</value>
+  </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Товар успешно добавлен</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Введите корректное количество товаров</value>
+  </data>
+  <data name="PiceOne" xml:space="preserve">
+    <value>Сначала добавьте товар и цену за 1 шт в базу</value>
+  </data>
+  <data name="PurchasePrice" xml:space="preserve">
+    <value>Введите корректную цену </value>
+  </data>
+  <data name="NameAndPrice" xml:space="preserve">
+    <value>Заполните название и цену закупки</value>
+  </data>
+  <data name="Calculation" xml:space="preserve">
+    <value>Ошибка при вычислении количества</value>
+  </data>
+  <data name="InformationSuccess" xml:space="preserve">
+    <value>Информация успешно обновлена</value>
+  </data>
+  <data name="FindProduct" xml:space="preserve">
+    <value>Сначала найдите товар по ID</value>
+  </data>
+  <data name="NumberCount" xml:space="preserve">
+    <value>Введите корректное число для количества</value>
+  </data>
+  <data name="NumberRest" xml:space="preserve">
+    <value>Введите корректное число для остатка</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Введите корректный ID товара</value>
+  </data>
+  <data name="GuidID" xml:space="preserve">
+    <value>ID не является типом Guid</value>
+  </data>
+  <data name="NotFoundShipment" xml:space="preserve">
+    <value>Отгрузки не найдены</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>Недостаточно товара на складе</value>
+  </data>
 </root>

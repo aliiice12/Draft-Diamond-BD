@@ -17,30 +17,33 @@ namespace Draft_Diamond_BD
         {
             var login = textBoxLogin.Text.Trim();
             var password = textBoxPassword.Text.Trim();
-
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            var name = textBoxName.Text.Trim();
+            var surname = textBoxSurname.Text.Trim();
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password) ||
+                string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
             {
-                MessageBox.Show(Resources.EnterTheCorrectInformation);
+                MessageBox.Show(Resources.EnterTheCorrectInformation); 
                 return;
             }
             using (var db = new DBWorkers())
             {
-                var user = db.Workers.FirstOrDefault(w => w.Login == login);
-                if (user != null)
+                var existingUser = db.Workers.FirstOrDefault(w => w.Login == login);
+                if (existingUser != null)
                 {
-                    MessageBox.Show(Resources.SuchLogin);
+                    MessageBox.Show(Resources.SuchLogin); 
                     return;
                 }
                 var newWorker = new Worker()
                 {
                     Login = login,
-                    Password = password
+                    Password = password,
+                    Name = name,
+                    Surname = surname
                 };
-
                 db.Workers.Add(newWorker);
                 db.SaveChanges();
             }
-            MessageBox.Show(Resources.Success);
+            MessageBox.Show(Resources.Success); 
             new Authorization().Show();
             Hide();
         }

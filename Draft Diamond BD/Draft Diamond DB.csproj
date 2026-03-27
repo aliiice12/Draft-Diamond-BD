@@ -159,12 +159,6 @@
     <Compile Include="AddForm\AddCard.Designer.cs">
       <DependentUpon>AddCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\AddCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddForm\AddCategory.Designer.cs">
-      <DependentUpon>AddCategory.cs</DependentUpon>
-    </Compile>
     <Compile Include="ChangeForm\ChangeCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,12 +192,24 @@
     </Compile>
     <Compile Include="DataBase\DBShipment.cs" />
     <Compile Include="DataBase\DBShipmentClass.cs" />
+    <Compile Include="DataBase\DBShipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBase\DBShipmentForm.Designer.cs">
+      <DependentUpon>DBShipmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\DBWorker.cs" />
     <Compile Include="Delete\DeleteCard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Delete\DeleteCard.Designer.cs">
       <DependentUpon>DeleteCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindShipment.Designer.cs">
+      <DependentUpon>FindShipment.cs</DependentUpon>
     </Compile>
     <Compile Include="HistoryShipment.cs">
       <SubType>Form</SubType>
@@ -249,9 +255,6 @@
     <EmbeddedResource Include="AddForm\AddCard.resx">
       <DependentUpon>AddCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\AddCategory.resx">
-      <DependentUpon>AddCategory.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChangeForm\ChangeCard.resx">
       <DependentUpon>ChangeCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Delete\DeleteCard.resx">
       <DependentUpon>DeleteCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindShipment.resx">
+      <DependentUpon>FindShipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryShipment.resx">
       <DependentUpon>HistoryShipment.cs</DependentUpon>

@@ -1,5 +1,7 @@
 ﻿using Draft_Diamond_BD.DataBase;
+using Draft_Diamond_BD.DataBaseProducts;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 namespace Draft_Diamond_BD
@@ -7,11 +9,24 @@ namespace Draft_Diamond_BD
     public partial class CreatingShipment : Form
     {
         private DataGridView listProducts;
-        public CreatingShipment()
+        private string userLogin;
+        public CreatingShipment(string login)
         {
             InitializeComponent();
+            userLogin = login;
+            if (listProducts == null)
+            {
+                listProducts = new DataGridView
+                {
+                    Location = new Point(20, 150),
+                    Size = new Size(800, 400),
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                };
+                Controls.Add(listProducts);
+            }
             LoadProducts();
             buttonAdd.Click += new EventHandler(buttonAdd_Click);
+            buttonShipment.Click += new EventHandler(buttonShipment_Click);
         }
         private void LoadProducts()
         {
@@ -19,23 +34,51 @@ namespace Draft_Diamond_BD
             {
                 listProducts.AutoGenerateColumns = true;
                 listProducts.DataSource = db.Shipments.ToList();
-                listProducts.Columns["Id"].HeaderText = "ID";
-                listProducts.Columns["Name"].HeaderText = "Название";
-                listProducts.Columns["Unit"].HeaderText = "Ед.изм.";
-                listProducts.Columns["Quantity"].HeaderText = "Количество";
-                listProducts.Columns["Destination"].HeaderText = "Куда";
-                listProducts.Columns["Recipient"].HeaderText = "Кому";
+                if (listProducts.Columns["Id"] != null)
+                    listProducts.Columns["Id"].HeaderText = "ID";
+                if (listProducts.Columns["Name"] != null)
+                    listProducts.Columns["Name"].HeaderText = "Название";
+                if (listProducts.Columns["Unit"] != null)
+                    listProducts.Columns["Unit"].HeaderText = "Ед.изм.";
+                if (listProducts.Columns["Quantity"] != null)
+                    listProducts.Columns["Quantity"].HeaderText = "Количество";
+                if (listProducts.Columns["Destination"] != null)
+                    listProducts.Columns["Destination"].HeaderText = "Куда";
+                if (listProducts.Columns["Recipient"] != null)
+                    listProducts.Columns["Recipient"].HeaderText = "Кому";
+                if (!listProducts.Columns.Contains("Кто создал"))
+                {
+                    var createdByColumn = new DataGridViewTextBoxColumn
+                    {
+                        Name = "Кто создал",
+                        HeaderText = "Кто создал",
+                        ReadOnly = true,
+                        DataPropertyName = null 
+                    };
+                    listProducts.Columns.Add(createdByColumn);
+                }
+                listProducts.DataBindingComplete -= ListProducts_DataBindingComplete;
+                listProducts.DataBindingComplete += ListProducts_DataBindingComplete;
+            }  
+        }
+        private void ListProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow row in listProducts.Rows)
+            {
+                if (!row.IsNewRow)
+                    row.Cells["Кто создал"].Value = userLogin; 
             }
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var name = textBoxTitle.Text;
-            var unit = textBoxUnit.Text;
-            var quantityText = textBoxQualitity.Text;
-            var destination = textBoxWhere.Text;
-            var recipient = textBoxWhome.Text;
+            var name = textBoxTitle.Text.Trim();
+            var unit = textBoxUnit.Text.Trim();
+            var quantityText = textBoxQualitity.Text.Trim();
+            var destination = textBoxWhere.Text.Trim();
+            var recipient = textBoxWhome.Text.Trim();
             int quantity;
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) ||!int.TryParse(quantityText, out quantity))
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) || !int.TryParse(quantityText, out quantity))
             {
                 MessageBox.Show(Resources.EnterTheCorrectInformation);
                 return;
@@ -48,7 +91,7 @@ namespace Draft_Diamond_BD
                     Unit = unit,
                     Quantity = quantity,
                     Destination = destination,
-                    Recipient = recipient
+                    Recipient = recipient,
                 };
                 db.Shipments.Add(shipment);
                 db.SaveChanges();
@@ -59,6 +102,56 @@ namespace Draft_Diamond_BD
             textBoxQualitity.Clear();
             textBoxWhere.Clear();
             textBoxWhome.Clear();
+            MessageBox.Show(Resources.InformationSuccess, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void buttonShipment_Click(object sender, EventArgs e)
+        {
+            var name = textBoxTitle.Text.Trim();
+            var unit = textBoxUnit.Text.Trim();
+            var quantityText = textBoxQualitity.Text.Trim();
+            var destination = textBoxWhere.Text.Trim();
+            var recipient = textBoxWhome.Text.Trim();
+            int quantity;
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) || !int.TryParse(quantityText, out quantity))
+            {
+                MessageBox.Show(Resources.EnterTheCorrectInformation);
+                return;
+            }
+            using (var db = new DBShipment())
+            using (var dbProducts = new DBProducts())
+            {
+                var product = dbProducts.Products.FirstOrDefault(p => p.Name == name);
+                if (product == null)
+                {
+                    MessageBox.Show(Resources.NotDatabase);
+                    return;
+                }
+                if (product.Rest < quantity)
+                {
+                    MessageBox.Show(Resources.NotEnough);
+                    return;
+                }
+                var shipment = new DBShipmentClass
+                {
+                    Name = name,
+                    Unit = unit,
+                    Quantity = quantity,
+                    Destination = destination,
+                    Recipient = recipient,
+                };
+                db.Shipments.Add(shipment);
+                product.Rest -= quantity;
+                db.SaveChanges();
+                dbProducts.SaveChanges();
+            }
+
+            LoadProducts();
+            textBoxTitle.Clear();
+            textBoxUnit.Clear();
+            textBoxQualitity.Clear();
+            textBoxWhere.Clear();
+            textBoxWhome.Clear();
+            MessageBox.Show(Resources.InformationSuccess, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void InitializeComponent()
         {
@@ -114,38 +207,39 @@ namespace Draft_Diamond_BD
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.title.Location = new System.Drawing.Point(28, 70);
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.title.Location = new System.Drawing.Point(25, 82);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(97, 22);
+            this.title.Size = new System.Drawing.Size(105, 25);
             this.title.TabIndex = 2;
             this.title.Text = "Название:";
             // 
             // unit
             // 
             this.unit.AutoSize = true;
-            this.unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.unit.Location = new System.Drawing.Point(11, 110);
+            this.unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.unit.Location = new System.Drawing.Point(10, 127);
             this.unit.Name = "unit";
-            this.unit.Size = new System.Drawing.Size(135, 22);
+            this.unit.Size = new System.Drawing.Size(153, 25);
             this.unit.TabIndex = 3;
             this.unit.Text = "Ед.измерения:";
             // 
             // quantity
             // 
             this.quantity.AutoSize = true;
-            this.quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.quantity.Location = new System.Drawing.Point(28, 152);
+            this.quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.quantity.Location = new System.Drawing.Point(12, 177);
             this.quantity.Name = "quantity";
-            this.quantity.Size = new System.Drawing.Size(114, 22);
+            this.quantity.Size = new System.Drawing.Size(129, 25);
             this.quantity.TabIndex = 4;
             this.quantity.Text = "Количество:";
             // 
             // textBoxTitle
             // 
             this.textBoxTitle.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxTitle.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxTitle.Location = new System.Drawing.Point(152, 70);
+            this.textBoxTitle.Location = new System.Drawing.Point(169, 76);
             this.textBoxTitle.Multiline = true;
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(170, 26);
@@ -155,8 +249,9 @@ namespace Draft_Diamond_BD
             // textBoxUnit
             // 
             this.textBoxUnit.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxUnit.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxUnit.Location = new System.Drawing.Point(152, 110);
+            this.textBoxUnit.Location = new System.Drawing.Point(169, 127);
             this.textBoxUnit.Multiline = true;
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(170, 25);
@@ -166,19 +261,21 @@ namespace Draft_Diamond_BD
             // textBoxQualitity
             // 
             this.textBoxQualitity.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxQualitity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxQualitity.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxQualitity.Location = new System.Drawing.Point(152, 154);
+            this.textBoxQualitity.Location = new System.Drawing.Point(169, 177);
             this.textBoxQualitity.Multiline = true;
             this.textBoxQualitity.Name = "textBoxQualitity";
-            this.textBoxQualitity.Size = new System.Drawing.Size(170, 22);
+            this.textBoxQualitity.Size = new System.Drawing.Size(170, 25);
             this.textBoxQualitity.TabIndex = 7;
             this.textBoxQualitity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAdd.Location = new System.Drawing.Point(50, 287);
+            this.buttonAdd.Location = new System.Drawing.Point(55, 340);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(232, 48);
             this.buttonAdd.TabIndex = 8;
@@ -188,47 +285,51 @@ namespace Draft_Diamond_BD
             // Whome
             // 
             this.Whome.AutoSize = true;
-            this.Whome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Whome.Location = new System.Drawing.Point(46, 192);
+            this.Whome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Whome.Location = new System.Drawing.Point(42, 224);
             this.Whome.Name = "Whome";
-            this.Whome.Size = new System.Drawing.Size(59, 22);
+            this.Whome.Size = new System.Drawing.Size(67, 25);
             this.Whome.TabIndex = 10;
             this.Whome.Text = "Кому:";
             // 
             // Where
             // 
             this.Where.AutoSize = true;
-            this.Where.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Where.Location = new System.Drawing.Point(48, 234);
+            this.Where.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Where.Location = new System.Drawing.Point(42, 279);
             this.Where.Name = "Where";
-            this.Where.Size = new System.Drawing.Size(57, 22);
+            this.Where.Size = new System.Drawing.Size(61, 25);
             this.Where.TabIndex = 11;
             this.Where.Text = "Куда:";
             // 
             // textBoxWhome
             // 
             this.textBoxWhome.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxWhome.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxWhome.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxWhome.Location = new System.Drawing.Point(152, 194);
+            this.textBoxWhome.Location = new System.Drawing.Point(169, 224);
+            this.textBoxWhome.Multiline = true;
             this.textBoxWhome.Name = "textBoxWhome";
-            this.textBoxWhome.Size = new System.Drawing.Size(170, 22);
+            this.textBoxWhome.Size = new System.Drawing.Size(170, 25);
             this.textBoxWhome.TabIndex = 12;
             this.textBoxWhome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxWhere
             // 
             this.textBoxWhere.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxWhere.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxWhere.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxWhere.Location = new System.Drawing.Point(152, 234);
+            this.textBoxWhere.Location = new System.Drawing.Point(169, 275);
             this.textBoxWhere.Multiline = true;
             this.textBoxWhere.Name = "textBoxWhere";
-            this.textBoxWhere.Size = new System.Drawing.Size(170, 22);
+            this.textBoxWhere.Size = new System.Drawing.Size(170, 29);
             this.textBoxWhere.TabIndex = 13;
             this.textBoxWhere.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonShipment
             // 
             this.buttonShipment.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonShipment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonShipment.Location = new System.Drawing.Point(245, 431);
             this.buttonShipment.Name = "buttonShipment";

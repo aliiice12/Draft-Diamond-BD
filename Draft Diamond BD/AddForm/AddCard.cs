@@ -1,5 +1,4 @@
 ﻿using Draft_Diamond_BD.DataBaseProducts;
-using Draft_Diamond_BD.Products;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,46 +6,69 @@ namespace Draft_Diamond_BD
 {
     public partial class AddCard : Form
     {
+        private WarehouseAdmin _warehouseAdmin;
+        private DatabaseProduct _databaseProduct;
         public AddCard()
         {
             InitializeComponent();
-            buttonAdd.Click += ButtonAdd_Click;
+            buttonAdd.Click += BtnSave_Click;
+        }
+        public AddCard(WarehouseAdmin warehouseAdmin)
+        {
+            _warehouseAdmin = warehouseAdmin;
+        }
+        public AddCard(DatabaseProduct databaseProduct) 
+        {
+            _databaseProduct = databaseProduct;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxName.Text) ||string.IsNullOrWhiteSpace(textBoxUnit.Text) ||string.IsNullOrWhiteSpace(textBoxPrice.Text))
+            if (string.IsNullOrWhiteSpace(textBoxName.Text) ||
+        string.IsNullOrWhiteSpace(textBoxPrice.Text))
             {
-                MessageBox.Show("Resources.FillFields", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.NameAndPrice,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!decimal.TryParse(textBoxPrice.Text, out decimal totalPurchase))
+            if (!decimal.TryParse(textBoxPrice.Text.Trim(), out decimal purchasePrice))
             {
-                MessageBox.Show("Resources.Price", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.PurchasePrice,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new DBProducts())
             {
-                var productFromDb = db.Products.FirstOrDefault(p => p.Name == textBoxName.Text);
+                var productFromDb = db.Products.FirstOrDefault(p => p.Name == textBoxName.Text.Trim());
                 if (productFromDb == null)
                 {
-                    MessageBox.Show("Resources.NotDatabase", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.PiceOne,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                decimal unitPrice = productFromDb.Price;
-                var count = (int)Math.Floor(totalPurchase / unitPrice);
+                decimal rawCount = purchasePrice / productFromDb.Price;
+                int count;
+                if (!int.TryParse(Math.Floor(rawCount).ToString(), out count))
+                {
+                    MessageBox.Show(Resources.Calculation,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 productFromDb.Count += count;
                 productFromDb.Rest += count;
                 db.SaveChanges();
             }
-            MessageBox.Show("Resources.AddProduct", Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             textBoxName.Clear();
-            textBoxUnit.Clear();
+            textBoxUnit.Clear(); 
             textBoxPrice.Clear();
+            if (_warehouseAdmin != null)
+                _warehouseAdmin.LoadProducts();
+            else if (_databaseProduct != null)
+                _databaseProduct.ShowAllProducts();
+            MessageBox.Show(Resources.AddProduct,Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
+            Close();
         }
-        
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Resources.AddProduct", Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Resources.AddProduct, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

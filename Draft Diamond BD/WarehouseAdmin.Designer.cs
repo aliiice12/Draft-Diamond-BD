@@ -23,14 +23,11 @@
         private System.Windows.Forms.Button buttonHistoryShipment;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addCardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem категориюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeCardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem категориюToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem deleteCardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem категориюToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem найтиОтгрузкуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchShipmentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem найтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteCardToolStripMenuItem;
     }
 }

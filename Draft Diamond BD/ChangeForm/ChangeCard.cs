@@ -8,58 +8,67 @@ namespace Draft_Diamond_BD
 {
     public partial class ChangeCard : Form
     {
-        private Product currentProduct;
-        public ChangeCard()
+        private Product currentProduct; 
+        private DataGridView dgvWarehouse; 
+        public ChangeCard(DataGridView dgv)
         {
             InitializeComponent();
-            textBoxName.KeyDown += TextBoxName_KeyDown;
+            dgvWarehouse = dgv;
+            textBoxId.KeyDown += TextBoxId_KeyDown; 
             buttonChange.Click += ButtonChange_Click;
         }
-        private void ButtonSearch_Click(object sender, EventArgs e)
+        private void TextBoxId_KeyDown(object sender, KeyEventArgs e)
         {
-            var input = textBoxName.Text.Trim();
-            if (string.IsNullOrEmpty(input))
+            if (e.KeyCode == Keys.Enter)
             {
-                MessageBox.Show("Resources.NameProduct", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                LoadProductById();
+            }
+        }
+        private void LoadProductById()
+        {
+            if (!Guid.TryParse(textBoxId.Text.Trim(), out Guid id))
+            {
+                MessageBox.Show(Resources.ID, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new DBProducts())
             {
-                Product product = null;
-                if (Guid.TryParse(input, out Guid id))
+                currentProduct = db.Products.FirstOrDefault(p => p.Id == id);
+                if (currentProduct == null)
                 {
-                    product = db.Products.FirstOrDefault(p => p.Id == id);
+                    MessageBox.Show(Resources.NotDatabase,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                else
-                {
-                    string search = input.ToLower();
-                    product = db.Products.FirstOrDefault(p => p.Name.ToLower() == search);
-                }
+                textBoxName.Text = currentProduct.Name;
+                textBoxUnit.Text = currentProduct.Count.ToString();
+                textBoxPrice.Text = currentProduct.Price.ToString();
             }
         }
-
-        private void BtnUpdate_Click(object sender, EventArgs e)
+        private void ButtonChange_Click(object sender, EventArgs e)
         {
             if (currentProduct == null)
             {
-                MessageBox.Show("Сначала найдите товар", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!int.TryParse(textBoxId.Text.Trim(), out int count))
-            {
-                MessageBox.Show("Введите корректное число для art", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.FindProduct,Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!decimal.TryParse(textBoxUnit.Text.Trim(), out decimal price))
+            if (!int.TryParse(textBoxUnit.Text.Trim(), out int count))
             {
-                MessageBox.Show("Введите корректное число для количества", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.NumberCount, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(textBoxPrice.Text.Trim(), out decimal price))
+            {
+                MessageBox.Show(Resources.PurchasePrice, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!int.TryParse(textBoxPrice.Text.Trim(), out int rest))
             {
-                MessageBox.Show("Введите корректное число для цены", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.NumberRest, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new DBProducts())
@@ -67,28 +76,23 @@ namespace Draft_Diamond_BD
                 var productToUpdate = db.Products.FirstOrDefault(p => p.Id == currentProduct.Id);
                 if (productToUpdate != null)
                 {
+                    productToUpdate.Name = textBoxName.Text.Trim();
                     productToUpdate.Count = count;
                     productToUpdate.Price = price;
                     productToUpdate.Rest = rest;
                     db.SaveChanges();
-                    MessageBox.Show("Информация успешно обновлена",Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Resources.InformationSuccess,Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RefreshDataGrid();
                 }
             }
         }
-        private void TextBoxName_KeyDown(object sender, KeyEventArgs e)
+        private void RefreshDataGrid()
         {
-            if (e.KeyCode == Keys.Enter)
+            using (var db = new DBProducts())
             {
-                e.SuppressKeyPress = true; 
-                e.Handled = true;
-                ButtonSearch_Click(sender, EventArgs.Empty);
+                dgvWarehouse.DataSource = db.Products.ToList();
             }
-        }
-        private void ButtonChange_Click(object sender, EventArgs e)
-        {
-            var changeCardform = new ChangeCard();
-            changeCardform.Show();
-            Hide();
         }
     }
 }
+

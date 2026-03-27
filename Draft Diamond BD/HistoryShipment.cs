@@ -9,6 +9,7 @@ namespace Draft_Diamond_BD
     {
         private DataGridView dgvHistory;
         private string userLogin;
+        public DataGridView HistoryGrid => dgvHistory;
         public HistoryShipment(string login)
         {
             InitializeComponent();

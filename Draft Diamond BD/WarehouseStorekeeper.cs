@@ -50,29 +50,20 @@ namespace Draft_Diamond_BD
                         p.Name,
                         p.Count,
                         p.Price,
-                        p.Rest
+                        p.Rest,
                     })
                     .ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
             }
         }
-        private void LoadProducts()
+        public void LoadProducts()
         {
             using (var db = new DBProducts())
             {
-                var products = db.Products
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.Name,
-                        p.Count,
-                        p.Price,
-                        p.Rest
-                    })
+                dgvWarehouse.DataSource = db.Products
+                    .Select(p => new { p.Id, p.Name, p.Count, p.Price, p.Rest })
                     .ToList();
-                dgvWarehouse.DataSource = products;
-                SetupColumns();
             }
         }
         private void SetupColumns()
@@ -91,6 +82,7 @@ namespace Draft_Diamond_BD
 
             if (dgvWarehouse.Columns["Rest"] != null)
                 dgvWarehouse.Columns["Rest"].HeaderText = "Остаток";
+
         }
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,7 +91,7 @@ namespace Draft_Diamond_BD
         }
         private void CreateShipmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var createform = new CreatingShipment();
+            var createform = new CreatingShipment(userLogin);
             createform.Show();
         }
         private void Exit_Click(object sender, EventArgs e)

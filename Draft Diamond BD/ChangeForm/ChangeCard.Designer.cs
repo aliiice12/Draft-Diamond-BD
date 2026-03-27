@@ -125,6 +125,7 @@
             // 
             this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxName.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxName.Location = new System.Drawing.Point(297, 149);
             this.textBoxName.Multiline = true;
@@ -150,6 +151,7 @@
             // 
             this.textBoxPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxPrice.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPrice.ForeColor = System.Drawing.SystemColors.Window;
             this.textBoxPrice.Location = new System.Drawing.Point(297, 254);
             this.textBoxPrice.Multiline = true;

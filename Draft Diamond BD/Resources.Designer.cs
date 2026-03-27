@@ -61,6 +61,15 @@ namespace Draft_Diamond_BD {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Товар успешно добавлен.
+        /// </summary>
+        internal static string AddProduct {
+            get {
+                return ResourceManager.GetString("AddProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Браслет.
         /// </summary>
         internal static string Bracelet {
@@ -75,6 +84,24 @@ namespace Draft_Diamond_BD {
         internal static string Brooch {
             get {
                 return ResourceManager.GetString("Brooch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка при вычислении количества.
+        /// </summary>
+        internal static string Calculation {
+            get {
+                return ResourceManager.GetString("Calculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите корректное количество товаров.
+        /// </summary>
+        internal static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
             }
         }
         
@@ -133,11 +160,137 @@ namespace Draft_Diamond_BD {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Заполни поля.
+        /// </summary>
+        internal static string FillFields {
+            get {
+                return ResourceManager.GetString("FillFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сначала найдите товар по ID.
+        /// </summary>
+        internal static string FindProduct {
+            get {
+                return ResourceManager.GetString("FindProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ID не является типом Guid.
+        /// </summary>
+        internal static string GuidID {
+            get {
+                return ResourceManager.GetString("GuidID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите корректный ID товара.
+        /// </summary>
+        internal static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Информация успешно обновлена.
+        /// </summary>
+        internal static string InformationSuccess {
+            get {
+                return ResourceManager.GetString("InformationSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заполните название и цену закупки.
+        /// </summary>
+        internal static string NameAndPrice {
+            get {
+                return ResourceManager.GetString("NameAndPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Колье.
         /// </summary>
         internal static string Necklace {
             get {
                 return ResourceManager.GetString("Necklace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Товара нет в базе данных.
+        /// </summary>
+        internal static string NotDatabase {
+            get {
+                return ResourceManager.GetString("NotDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Недостаточно товара на складе.
+        /// </summary>
+        internal static string NotEnough {
+            get {
+                return ResourceManager.GetString("NotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отгрузки не найдены.
+        /// </summary>
+        internal static string NotFoundShipment {
+            get {
+                return ResourceManager.GetString("NotFoundShipment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите корректное число для количества.
+        /// </summary>
+        internal static string NumberCount {
+            get {
+                return ResourceManager.GetString("NumberCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите корректное число для остатка.
+        /// </summary>
+        internal static string NumberRest {
+            get {
+                return ResourceManager.GetString("NumberRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сначала добавьте товар и цену за 1 шт в базу.
+        /// </summary>
+        internal static string PiceOne {
+            get {
+                return ResourceManager.GetString("PiceOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Неправильно введена цена товара.
+        /// </summary>
+        internal static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите корректную цену .
+        /// </summary>
+        internal static string PurchasePrice {
+            get {
+                return ResourceManager.GetString("PurchasePrice", resourceCulture);
             }
         }
         
