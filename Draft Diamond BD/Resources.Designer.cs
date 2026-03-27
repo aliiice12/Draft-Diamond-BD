@@ -79,6 +79,15 @@ namespace Draft_Diamond_BD {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Товар удалён.
+        /// </summary>
+        internal static string DeleteProduct {
+            get {
+                return ResourceManager.GetString("DeleteProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Серьги.
         /// </summary>
         internal static string Earring {

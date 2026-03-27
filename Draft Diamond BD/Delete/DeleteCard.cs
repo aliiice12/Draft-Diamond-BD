@@ -34,7 +34,7 @@ namespace Draft_Diamond_BD
                 }
                 db.Products.Remove(product);
                 db.SaveChanges();
-                MessageBox.Show("Resources.ProductDelete");
+                MessageBox.Show(Resources.DeleteProduct);
                 textBoxId.Clear();
             }
         }

@@ -26,17 +26,20 @@ namespace Draft_Diamond_BD
 
                 if (user != null)
                 {
-                    if (user.Job == Jobs.Administrator)
+                    if (user.Password == password)
                     {
-                        var warehouseAdminForm = new WarehouseAdmin(user.Login);
-                        warehouseAdminForm.Show();
+                        if (user.Job == Jobs.Administrator)
+                        {
+                            var warehouseAdminForm = new WarehouseAdmin(user.Login);
+                            warehouseAdminForm.Show();
+                        }
+                        else
+                        {
+                            var warehouseStorekeeperForm = new WarehouseStorekeeper(user.Login);
+                            warehouseStorekeeperForm.Show();
+                        }
+                        Hide();
                     }
-                    else
-                    {
-                        var warehouseStorekeeperForm = new WarehouseStorekeeper(user.Login);
-                        warehouseStorekeeperForm.Show();
-                    }
-                    Hide();
                 }
                 else
                 {

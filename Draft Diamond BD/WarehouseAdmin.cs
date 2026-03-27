@@ -326,12 +326,11 @@ namespace Draft_Diamond_BD
             this.menuStripWarehouseProducts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
         private void deleteCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //тут логику прописать
+            var deleteCardDelete = new DeleteCard();
+            deleteCardDelete.Show();
         }
     }
 }

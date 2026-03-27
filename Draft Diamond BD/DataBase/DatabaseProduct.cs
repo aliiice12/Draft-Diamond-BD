@@ -15,7 +15,32 @@ namespace Draft_Diamond_BD
             InitializeComponent();
             CreateDataGridView();
             AddData();
+            Namee();
             var products = GetProductsFromDatabase().Where(p => p.Name.Contains(searchText)).ToList();   
+        }
+        public DatabaseProduct()
+        {
+            InitializeComponent();
+            CreateDataGridView();
+            AddData();
+        }
+        private void Namee()
+        {
+            using (var db = new DBProducts())
+            {
+                var products = db.Products
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.Name,
+                        p.Count,
+                        p.Price,
+                        p.Rest
+                    })
+                    .ToList();
+                dgvProducts.DataSource = products;
+                ConfigureDataGridViewColumns();
+            }
         }
         private void CreateDataGridView()
         {

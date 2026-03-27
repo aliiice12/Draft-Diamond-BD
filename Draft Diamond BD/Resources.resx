@@ -156,4 +156,7 @@
   <data name="Brooch" xml:space="preserve">
     <value>Брошь</value>
   </data>
+  <data name="DeleteProduct" xml:space="preserve">
+    <value>Товар удалён</value>
+  </data>
 </root>
