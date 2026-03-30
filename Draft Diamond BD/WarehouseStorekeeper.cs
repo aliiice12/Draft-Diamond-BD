@@ -1,4 +1,5 @@
 ﻿using Draft_Diamond_BD.DataBaseProducts;
+using Draft_Diamond_BD.Products;
 using System;
 using System.Data;
 using System.Drawing;
@@ -16,6 +17,7 @@ namespace Draft_Diamond_BD
             userLogin = login;
             labelLogin.Text = userLogin;
             CreateDataGridView();
+            AddData();
             LoadProducts();
             весьСкладToolStripMenuItem.Click += (s, e) => LoadProducts();
             кольцоToolStripMenuItem.Click += (s, e) => FilterProducts(Resources.Ring);
@@ -57,6 +59,9 @@ namespace Draft_Diamond_BD
                 SetupColumns();
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void LoadProducts()
         {
             using (var db = new DBProducts())
@@ -64,6 +69,24 @@ namespace Draft_Diamond_BD
                 dgvWarehouse.DataSource = db.Products
                     .Select(p => new { p.Id, p.Name, p.Count, p.Price, p.Rest })
                     .ToList();
+            }
+        }
+        private void AddData()
+        {
+            using (var db = new DBProducts())
+            {
+                if (!db.Products.Any())
+                {
+                    db.Products.AddRange(new Product[]
+                    {
+                new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 800 },
+                new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 12000m, Rest = 2500 },
+                new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 35000m, Rest = 1200 },
+                new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 300 },
+                new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, Price = 5000m, Rest = 800 },
+                    });
+                    db.SaveChanges();
+                }
             }
         }
         private void SetupColumns()

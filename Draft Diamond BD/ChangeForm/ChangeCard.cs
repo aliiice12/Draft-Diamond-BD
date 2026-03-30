@@ -59,13 +59,11 @@ namespace Draft_Diamond_BD
                 MessageBox.Show(Resources.NumberCount, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (!decimal.TryParse(textBoxPrice.Text.Trim(), out decimal price))
             {
                 MessageBox.Show(Resources.PurchasePrice, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (!int.TryParse(textBoxPrice.Text.Trim(), out int rest))
             {
                 MessageBox.Show(Resources.NumberRest, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
