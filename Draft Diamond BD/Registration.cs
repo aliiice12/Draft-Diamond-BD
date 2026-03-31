@@ -1,4 +1,5 @@
 ﻿using Draft_Diamond_BD.DataBase;
+using Draft_Diamond_BD.HashPassword;
 using Draft_Diamond_BD.Workers;
 using System;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Draft_Diamond_BD
                 var newWorker = new Worker()
                 {
                     Login = login,
-                    Password = password,
+                    Password = SimpleHash.HashSHA256(password),
                     Name = name,
                     Surname = surname
                 };

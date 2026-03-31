@@ -56,9 +56,9 @@ namespace Draft_Diamond_BD
         {
             using (var db = new DBWorkers())
             {
-                if (!db.Workers.Any(w => w.Login == "789"))
+                if (!db.Workers.Any(w => w.Login == "777777"))
                 {
-                    db.Workers.Add(new Admin(Guid.NewGuid(), "789", "888", "Admin", "One"));
+                    db.Workers.Add(new Admin(Guid.NewGuid(), "777777", "888", "Admin", "One"));
                 }
 
                 if (!db.Workers.Any(w => w.Login == "012"))

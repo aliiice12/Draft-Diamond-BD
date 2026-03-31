@@ -15,7 +15,7 @@ namespace Draft_Diamond_BD
             InitializeComponent();
             CreateDataGridView();
             LoadHistory();
-            userLogin = login;
+            userLogin = Resources.LoginInMenu + login;
             searchtoolStripMenuItem.Click += SearchtoolStripMenuItem_Click;
             buttonListProduct.Click += ButtonListProduct_Click;
         }

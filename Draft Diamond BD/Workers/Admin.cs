@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Draft_Diamond_BD.HashPassword;
+using System;
 
 namespace Draft_Diamond_BD.Workers
 {
@@ -9,7 +10,7 @@ namespace Draft_Diamond_BD.Workers
         {
             Id = id;
             Login = login;
-            Password = password; 
+            Password = SimpleHash.HashSHA256(password); 
             Name = Name;
             Surname = surname;
             Job = Jobs.Administrator;

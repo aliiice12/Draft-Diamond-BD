@@ -210,4 +210,7 @@
   <data name="NotEnough" xml:space="preserve">
     <value>Недостаточно товара на складе</value>
   </data>
+  <data name="LoginInMenu" xml:space="preserve">
+    <value>Логин:</value>
+  </data>
 </root>

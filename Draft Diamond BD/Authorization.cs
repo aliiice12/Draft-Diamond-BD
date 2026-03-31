@@ -1,4 +1,5 @@
 ﻿using Draft_Diamond_BD.DataBase;
+using Draft_Diamond_BD.HashPassword;
 using Draft_Diamond_BD.Workers;
 using System;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Draft_Diamond_BD
         private void enter_Click(object sender, EventArgs e)
         {
             var login = txtLogin.Text.Trim();
-            var password = txtPassword.Text.Trim();
+            var password = SimpleHash.HashSHA256(txtPassword.Text.Trim());
 
             using (var db = new DBWorkers())
             {

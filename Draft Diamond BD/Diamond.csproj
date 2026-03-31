@@ -211,6 +211,7 @@
     <Compile Include="FindShipment.Designer.cs">
       <DependentUpon>FindShipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="HashConvert\HashConvert.cs" />
     <Compile Include="HistoryShipment.cs">
       <SubType>Form</SubType>
     </Compile>

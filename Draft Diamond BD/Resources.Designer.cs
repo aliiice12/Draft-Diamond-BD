@@ -205,6 +205,15 @@ namespace Draft_Diamond_BD {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Логин:.
+        /// </summary>
+        internal static string LoginInMenu {
+            get {
+                return ResourceManager.GetString("LoginInMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполните название и цену закупки.
         /// </summary>
         internal static string NameAndPrice {
