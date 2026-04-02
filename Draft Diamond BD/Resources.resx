@@ -213,4 +213,7 @@
   <data name="LoginInMenu" xml:space="preserve">
     <value>Логин:</value>
   </data>
+  <data name="ErrorPassword" xml:space="preserve">
+    <value>Неверный пароль</value>
+  </data>
 </root>

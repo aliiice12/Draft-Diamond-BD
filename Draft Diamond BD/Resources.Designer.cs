@@ -160,6 +160,15 @@ namespace Draft_Diamond_BD {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Неверный пароль.
+        /// </summary>
+        internal static string ErrorPassword {
+            get {
+                return ResourceManager.GetString("ErrorPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполни поля.
         /// </summary>
         internal static string FillFields {

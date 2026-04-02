@@ -6,11 +6,18 @@ namespace Draft_Diamond_BD.HashPassword
 {
     public class SimpleHash
     {
-        public static byte[] HashSHA256(string input)
+        public static string HashSHA256(string input)
         {
-            using (var sha256 = new SHA256Managed())
+            using (var sha256 = SHA256.Create())
             {
-                return sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                var sb = new StringBuilder();
+                foreach (var b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString(); 
             }
         }
     }

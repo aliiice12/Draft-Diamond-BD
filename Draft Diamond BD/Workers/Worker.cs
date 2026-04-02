@@ -9,7 +9,7 @@ namespace Draft_Diamond_BD.Workers
     {
         public Guid Id { get; set; }
         public string Login {  get; set; }
-        public byte[] Password { get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public Jobs Job { get; set; }
@@ -17,7 +17,7 @@ namespace Draft_Diamond_BD.Workers
         {
             Id = Guid.NewGuid(); 
         }
-        public Worker(Guid id,string login,string password,string name,string surname,Jobs job) 
+        public Worker(string login,string password,string name,string surname,Jobs job) 
         { 
             Id = Guid.NewGuid();
             Login = login;

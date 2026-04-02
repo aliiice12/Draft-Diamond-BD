@@ -58,16 +58,17 @@ namespace Draft_Diamond_BD
             {
                 if (!db.Workers.Any(w => w.Login == "777777"))
                 {
-                    db.Workers.Add(new Admin(Guid.NewGuid(), "777777", "888", "Admin", "One"));
+                    db.Workers.Add(new Admin("777777", "888", "Admin", "One"));
                 }
 
                 if (!db.Workers.Any(w => w.Login == "012"))
                 {
-                    db.Workers.Add(new Admin(Guid.NewGuid(), "012", "8642", "Admin", "Two"));
+                    db.Workers.Add(new Admin("012", "8642", "Admin", "Two"));
                 }
 
                 db.SaveChanges();
             }
         }
+        
     }
 }

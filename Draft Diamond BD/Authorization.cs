@@ -41,6 +41,10 @@ namespace Draft_Diamond_BD
                         }
                         Hide();
                     }
+                    else
+                    {
+                        MessageBox.Show(Resources.ErrorPassword);
+                    }
                 }
                 else
                 {
@@ -52,16 +56,17 @@ namespace Draft_Diamond_BD
         {
             using (var db = new DBWorkers())
             {
+                
                 if (!db.Workers.Any(w => w.Login == "789"))
                 {
-                    db.Workers.Add(new Admin(Guid.NewGuid(), "789", "888", "Admin", "One"));
+                    db.Workers.Add(new Admin("789", "777", "Admin", "One"));
                 }
 
                 if (!db.Workers.Any(w => w.Login == "012"))
                 {
-                    db.Workers.Add(new Admin(Guid.NewGuid(), "012", "8642", "Admin", "Two"));
+                    db.Workers.Add(new Admin("012", "8642", "Admin", "Two"));
                 }
-
+                db.SaveChanges();
             }
         }
         private void btnRegister_Click(object sender, EventArgs e)
