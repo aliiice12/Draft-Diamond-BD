@@ -12,7 +12,6 @@ namespace Draft_Diamond_BD
         public Authorization()
         {
             InitializeComponent();
-            EnsureAdminsExist();
             enter.Click += enter_Click;
             btnRegister.Click += btnRegister_Click;
         }
@@ -52,23 +51,7 @@ namespace Draft_Diamond_BD
                 }
             }
         }
-        private void EnsureAdminsExist()
-        {
-            using (var db = new DBWorkers())
-            {
-                
-                if (!db.Workers.Any(w => w.Login == "789"))
-                {
-                    db.Workers.Add(new Admin("789", "777", "Admin", "One"));
-                }
-
-                if (!db.Workers.Any(w => w.Login == "012"))
-                {
-                    db.Workers.Add(new Admin("012", "8642", "Admin", "Two"));
-                }
-                db.SaveChanges();
-            }
-        }
+        
         private void btnRegister_Click(object sender, EventArgs e)
         {
             var registerform = new Registration();

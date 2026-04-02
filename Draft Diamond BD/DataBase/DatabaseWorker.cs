@@ -52,13 +52,13 @@ namespace Draft_Diamond_BD
             dgvWorkers.DataSource = null;
             dgvWorkers.DataSource = workers;
         }
-        private void EnsureAdminsExist()
+        private static void EnsureAdminsExist()
         {
             using (var db = new DBWorkers())
             {
-                if (!db.Workers.Any(w => w.Login == "777777"))
+                if (!db.Workers.Any(w => w.Login == "777"))
                 {
-                    db.Workers.Add(new Admin("777777", "888", "Admin", "One"));
+                    db.Workers.Add(new Admin("777", "888", "Admin", "One"));
                 }
 
                 if (!db.Workers.Any(w => w.Login == "012"))
