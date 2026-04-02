@@ -62,7 +62,6 @@ namespace Draft_Diamond_BD
                     db.Workers.Add(new Admin(Guid.NewGuid(), "012", "8642", "Admin", "Two"));
                 }
 
-                db.SaveChanges();
             }
         }
         private void btnRegister_Click(object sender, EventArgs e)
