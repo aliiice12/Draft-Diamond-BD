@@ -129,7 +129,7 @@ namespace Draft_Diamond_BD
         {
             dgvProducts.DataSource = products.Select(p => new
             {
-                p.Id,
+                
                 p.Name,
                 p.Count,
                 p.Price,

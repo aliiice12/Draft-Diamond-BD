@@ -24,9 +24,9 @@
             this.enter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enter.Location = new System.Drawing.Point(304, 301);
+            this.enter.Location = new System.Drawing.Point(236, 320);
             this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(168, 59);
+            this.enter.Size = new System.Drawing.Size(192, 49);
             this.enter.TabIndex = 0;
             this.enter.Text = "Войти";
             this.enter.UseVisualStyleBackColor = false;
@@ -37,7 +37,7 @@
             this.txtLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtLogin.Location = new System.Drawing.Point(358, 137);
+            this.txtLogin.Location = new System.Drawing.Point(254, 131);
             this.txtLogin.Multiline = true;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(184, 34);
@@ -50,7 +50,7 @@
             this.txtPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtPassword.Location = new System.Drawing.Point(358, 195);
+            this.txtPassword.Location = new System.Drawing.Point(254, 192);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -63,9 +63,9 @@
             this.autorizatoinWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.autorizatoinWorker.AutoSize = true;
             this.autorizatoinWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.autorizatoinWorker.Location = new System.Drawing.Point(277, 49);
+            this.autorizatoinWorker.Location = new System.Drawing.Point(241, 63);
             this.autorizatoinWorker.Name = "autorizatoinWorker";
-            this.autorizatoinWorker.Size = new System.Drawing.Size(247, 32);
+            this.autorizatoinWorker.Size = new System.Drawing.Size(197, 26);
             this.autorizatoinWorker.TabIndex = 3;
             this.autorizatoinWorker.Text = "АВТОРИЗАЦИЯ ";
             // 
@@ -74,9 +74,9 @@
             this.loginWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginWorker.AutoSize = true;
             this.loginWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginWorker.Location = new System.Drawing.Point(244, 137);
+            this.loginWorker.Location = new System.Drawing.Point(154, 134);
             this.loginWorker.Name = "loginWorker";
-            this.loginWorker.Size = new System.Drawing.Size(88, 29);
+            this.loginWorker.Size = new System.Drawing.Size(69, 24);
             this.loginWorker.TabIndex = 4;
             this.loginWorker.Text = "Логин:";
             // 
@@ -85,9 +85,9 @@
             this.passwordWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordWorker.AutoSize = true;
             this.passwordWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordWorker.Location = new System.Drawing.Point(230, 195);
+            this.passwordWorker.Location = new System.Drawing.Point(142, 195);
             this.passwordWorker.Name = "passwordWorker";
-            this.passwordWorker.Size = new System.Drawing.Size(102, 29);
+            this.passwordWorker.Size = new System.Drawing.Size(81, 24);
             this.passwordWorker.TabIndex = 5;
             this.passwordWorker.Text = "Пароль:";
             // 
@@ -102,7 +102,7 @@
             // 
             // Authorization
             // 
-            this.ClientSize = new System.Drawing.Size(917, 467);
+            this.ClientSize = new System.Drawing.Size(662, 461);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.passwordWorker);
             this.Controls.Add(this.loginWorker);

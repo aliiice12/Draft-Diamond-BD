@@ -6,6 +6,7 @@ namespace Draft_Diamond_BD.Products
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public UniteOfMeasure uniteOfMeasure { get; set; }
         public int Count {get; set; }
         public decimal Price { get; set; }
         public int Rest {get; set; }

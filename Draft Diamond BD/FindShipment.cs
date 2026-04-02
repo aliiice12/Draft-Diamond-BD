@@ -16,7 +16,7 @@ namespace Draft_Diamond_BD
             string idText = textBoxID.Text.Trim();
             string name = textBoxName.Text.Trim();
 
-            using (var db = new DBShipment())
+            using (var db = new DBShipmentBasket())
             {
                 var query = db.Shipments.AsQueryable();
                 if (Guid.TryParse(idText, out Guid id))

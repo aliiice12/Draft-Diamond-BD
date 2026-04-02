@@ -48,13 +48,11 @@ namespace Draft_Diamond_BD
                     .Where(p => p.Name.Contains(category))
                     .Select(p => new
                     {
-                        p.Id,
                         p.Name,
                         p.Count,
                         p.Price,
                         p.Rest,
-                    })
-                    .ToList();
+                    }).ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
             }
@@ -67,7 +65,7 @@ namespace Draft_Diamond_BD
             using (var db = new DBProducts())
             {
                 dgvWarehouse.DataSource = db.Products
-                    .Select(p => new { p.Id, p.Name, p.Count, p.Price, p.Rest })
+                    .Select(p => new {p.Name, p.Count, p.Price, p.Rest })
                     .ToList();
             }
         }
@@ -79,11 +77,11 @@ namespace Draft_Diamond_BD
                 {
                     db.Products.AddRange(new Product[]
                     {
-                new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 800 },
-                new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 12000m, Rest = 2500 },
-                new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 35000m, Rest = 1200 },
-                new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 300 },
-                new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, Price = 5000m, Rest = 800 },
+                        new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 800 },
+                        new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 12000m, Rest = 2500 },
+                        new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 35000m, Rest = 1200 },
+                        new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 300 },
+                        new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, Price = 5000m, Rest = 800 },
                     });
                     db.SaveChanges();
                 }
@@ -91,8 +89,6 @@ namespace Draft_Diamond_BD
         }
         private void SetupColumns()
         {
-            if (dgvWarehouse.Columns["Id"] != null)
-                dgvWarehouse.Columns["Id"].HeaderText = "ID";
 
             if (dgvWarehouse.Columns["Name"] != null)
                 dgvWarehouse.Columns["Name"].HeaderText = "Название";

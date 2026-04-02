@@ -30,36 +30,39 @@ namespace Draft_Diamond_BD
         }
         private void LoadProducts()
         {
-            using (var db = new DBShipment())
+            using (var db = new DBShipmentBasket())
             {
                 listProducts.AutoGenerateColumns = true;
-                listProducts.DataSource = db.Shipments.ToList();
-                if (listProducts.Columns["Id"] != null)
-                    listProducts.Columns["Id"].HeaderText = "ID";
-                if (listProducts.Columns["Name"] != null)
-                    listProducts.Columns["Name"].HeaderText = "Название";
-                if (listProducts.Columns["Unit"] != null)
-                    listProducts.Columns["Unit"].HeaderText = "Ед.изм.";
-                if (listProducts.Columns["Quantity"] != null)
-                    listProducts.Columns["Quantity"].HeaderText = "Количество";
-                if (listProducts.Columns["Destination"] != null)
-                    listProducts.Columns["Destination"].HeaderText = "Куда";
-                if (listProducts.Columns["Recipient"] != null)
-                    listProducts.Columns["Recipient"].HeaderText = "Кому";
-                if (!listProducts.Columns.Contains("Кто создал"))
-                {
-                    var createdByColumn = new DataGridViewTextBoxColumn
-                    {
-                        Name = "Кто создал",
-                        HeaderText = "Кто создал",
-                        ReadOnly = true,
-                        DataPropertyName = null 
-                    };
-                    listProducts.Columns.Add(createdByColumn);
-                }
+                listProducts.DataSource = db.Shipments.Select(p => new
+                {p.Name, p.Unit, p.Quantity, p.Destination, p.Recipient}).ToList();
+                CreateCollums();
                 listProducts.DataBindingComplete -= ListProducts_DataBindingComplete;
                 listProducts.DataBindingComplete += ListProducts_DataBindingComplete;
             }  
+        }
+        private void CreateCollums()
+        {
+            if (listProducts.Columns["Name"] != null)
+                listProducts.Columns["Name"].HeaderText = "Название";
+            if (listProducts.Columns["Unit"] != null)
+                listProducts.Columns["Unit"].HeaderText = "Ед.изм.";
+            if (listProducts.Columns["Quantity"] != null)
+                listProducts.Columns["Quantity"].HeaderText = "Количество";
+            if (listProducts.Columns["Destination"] != null)
+                listProducts.Columns["Destination"].HeaderText = "Куда";
+            if (listProducts.Columns["Recipient"] != null)
+                listProducts.Columns["Recipient"].HeaderText = "Кому";
+            if (!listProducts.Columns.Contains("Кто создал"))
+            {
+                var createdByColumn = new DataGridViewTextBoxColumn
+                {
+                    Name = "Кто создал",
+                    HeaderText = "Кто создал",
+                    ReadOnly = true,
+                    DataPropertyName = null
+                };
+                listProducts.Columns.Add(createdByColumn);
+            };
         }
         private void ListProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -77,47 +80,12 @@ namespace Draft_Diamond_BD
             var destination = textBoxWhere.Text.Trim();
             var recipient = textBoxWhome.Text.Trim();
             int quantity;
-
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) || !int.TryParse(quantityText, out quantity))
             {
                 MessageBox.Show(Resources.EnterTheCorrectInformation);
                 return;
             }
-            using (var db = new DBShipment())
-            {
-                var shipment = new DBShipmentClass
-                {
-                    Name = name,
-                    Unit = unit,
-                    Quantity = quantity,
-                    Destination = destination,
-                    Recipient = recipient,
-                };
-                db.Shipments.Add(shipment);
-                db.SaveChanges();
-            }
-            LoadProducts();
-            textBoxTitle.Clear();
-            textBoxUnit.Clear();
-            textBoxQualitity.Clear();
-            textBoxWhere.Clear();
-            textBoxWhome.Clear();
-            MessageBox.Show(Resources.InformationSuccess, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        private void buttonShipment_Click(object sender, EventArgs e)
-        {
-            var name = textBoxTitle.Text.Trim();
-            var unit = textBoxUnit.Text.Trim();
-            var quantityText = textBoxQualitity.Text.Trim();
-            var destination = textBoxWhere.Text.Trim();
-            var recipient = textBoxWhome.Text.Trim();
-            int quantity;
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(unit) || !int.TryParse(quantityText, out quantity))
-            {
-                MessageBox.Show(Resources.EnterTheCorrectInformation);
-                return;
-            }
-            using (var db = new DBShipment())
+            using (var db = new DBShipmentBasket())
             using (var dbProducts = new DBProducts())
             {
                 var product = dbProducts.Products.FirstOrDefault(p => p.Name == name);
@@ -152,6 +120,30 @@ namespace Draft_Diamond_BD
             textBoxWhere.Clear();
             textBoxWhome.Clear();
             MessageBox.Show(Resources.InformationSuccess, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        //вот здесь выпадающие списки надо реализовать 
+        private void buttonShipment_Click(object sender, EventArgs e)
+        {
+            using (var dataSource = new DBShipmentBasket())
+            {
+                var allProductsInBasket = dataSource.Shipments.ToList();
+                if (allProductsInBasket.Count == 0)
+                {
+                    MessageBox.Show("Нет данных");
+                    return;
+                }
+                for (var i = 0; i < allProductsInBasket.Count; i++)
+                {
+                    using (var dataSource2 = new DBProducts())
+                    {
+                        var products = dataSource2.Products.FirstOrDefault(p => p.Id == allProductsInBasket[i].Id);
+                        products.Count = products.Count - allProductsInBasket[i].Quantity;
+
+                        dataSource2.SaveChanges();
+                    }
+                }
+            }
         }
         private void InitializeComponent()
         {

@@ -217,6 +217,7 @@
     <Compile Include="HistoryShipment.Designer.cs">
       <DependentUpon>HistoryShipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\UnitOfMeasurement.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -235,6 +236,12 @@
     </Compile>
     <Compile Include="SearchCard.Designer.cs">
       <DependentUpon>SearchCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchShipment.Designer.cs">
+      <DependentUpon>SearchShipment.cs</DependentUpon>
     </Compile>
     <Compile Include="WarehouseAdmin.cs">
       <SubType>Form</SubType>
@@ -294,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchCard.resx">
       <DependentUpon>SearchCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchShipment.resx">
+      <DependentUpon>SearchShipment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseAdmin.resx">
       <DependentUpon>WarehouseAdmin.cs</DependentUpon>

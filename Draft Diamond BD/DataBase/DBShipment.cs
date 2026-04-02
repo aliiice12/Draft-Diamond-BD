@@ -2,10 +2,10 @@
 
 namespace Draft_Diamond_BD.DataBase
 {
-    public class DBShipment : DbContext
+    public class DBShipmentBasket : DbContext
     {
         public DbSet<DBShipmentClass> Shipments { get; set; }
-        public DBShipment()
+        public DBShipmentBasket()
         {
             Database.EnsureCreated();
         }

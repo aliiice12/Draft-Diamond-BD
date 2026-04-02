@@ -37,6 +37,7 @@ namespace Draft_Diamond_BD
                 Margin = new Padding(10,10,10,10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
             };
             Controls.Add(dgvWarehouse);
         }
@@ -56,16 +57,19 @@ namespace Draft_Diamond_BD
         {
             using (var db = new DBProducts())
             {
-                var products = db.Products.ToList();
+                var products = db.Products.Select(p => new 
+                {
+                    p.Name,
+                    p.Count,
+                    p.Price,
+                    p.Rest,
+                }).ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
             }
         }
         private void SetupColumns()
         {
-            if (dgvWarehouse.Columns["Id"] != null)
-                dgvWarehouse.Columns["Id"].HeaderText = "ID";
-
             if (dgvWarehouse.Columns["Name"] != null)
                 dgvWarehouse.Columns["Name"].HeaderText = "Название";
 
@@ -111,6 +115,12 @@ namespace Draft_Diamond_BD
         {
             Application.Exit();
         }
+        private void changeAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newFormAuthorization = new Authorization();
+            newFormAuthorization.Show();
+            Hide();
+        }
         private void InitializeComponent()
         {
             this.labelwarehouse = new System.Windows.Forms.Label();
@@ -132,6 +142,7 @@ namespace Draft_Diamond_BD
             this.кольеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.брошьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItemOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelLogin = new System.Windows.Forms.Label();
             this.buttonHistoryShipment = new System.Windows.Forms.Button();
             this.menuStripWarehouseProducts.SuspendLayout();
@@ -139,12 +150,11 @@ namespace Draft_Diamond_BD
             // 
             // labelwarehouse
             // 
-            this.labelwarehouse.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelwarehouse.AutoSize = true;
             this.labelwarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelwarehouse.Location = new System.Drawing.Point(12, 75);
+            this.labelwarehouse.Location = new System.Drawing.Point(12, 107);
             this.labelwarehouse.Name = "labelwarehouse";
-            this.labelwarehouse.Size = new System.Drawing.Size(115, 36);
+            this.labelwarehouse.Size = new System.Drawing.Size(90, 29);
             this.labelwarehouse.TabIndex = 0;
             this.labelwarehouse.Text = "Склад:";
             // 
@@ -157,10 +167,11 @@ namespace Draft_Diamond_BD
             this.toolStripMenuItem1,
             this.searchtoolStripMenuItem,
             this.filterToolStripMenuItemFilter,
-            this.exitToolStripMenuItemOutput});
+            this.exitToolStripMenuItemOutput,
+            this.changeAccountToolStripMenuItem});
             this.menuStripWarehouseProducts.Location = new System.Drawing.Point(0, 0);
             this.menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            this.menuStripWarehouseProducts.Size = new System.Drawing.Size(732, 30);
+            this.menuStripWarehouseProducts.Size = new System.Drawing.Size(732, 24);
             this.menuStripWarehouseProducts.TabIndex = 1;
             this.menuStripWarehouseProducts.Text = "Меню";
             // 
@@ -169,13 +180,13 @@ namespace Draft_Diamond_BD
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCardToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(90, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(71, 20);
             this.toolStripMenuItem3.Text = "Добавить";
             // 
             // addCardToolStripMenuItem
             // 
             this.addCardToolStripMenuItem.Name = "addCardToolStripMenuItem";
-            this.addCardToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.addCardToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addCardToolStripMenuItem.Text = "Карточку ";
             // 
             // toolStripMenuItem2
@@ -183,13 +194,13 @@ namespace Draft_Diamond_BD
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeCardToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(92, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(73, 20);
             this.toolStripMenuItem2.Text = "Изменить";
             // 
             // changeCardToolStripMenuItem
             // 
             this.changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            this.changeCardToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.changeCardToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.changeCardToolStripMenuItem.Text = "Карточку";
             // 
             // toolStripMenuItem1
@@ -197,13 +208,13 @@ namespace Draft_Diamond_BD
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteCardToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(79, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 20);
             this.toolStripMenuItem1.Text = "Удалить";
             // 
             // deleteCardToolStripMenuItem
             // 
             this.deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            this.deleteCardToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.deleteCardToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.deleteCardToolStripMenuItem.Text = "Карточку";
             this.deleteCardToolStripMenuItem.Click += new System.EventHandler(this.deleteCardToolStripMenuItem_Click);
             // 
@@ -213,19 +224,19 @@ namespace Draft_Diamond_BD
             this.searchShipmentToolStripMenuItem,
             this.найтиToolStripMenuItem});
             this.searchtoolStripMenuItem.Name = "searchtoolStripMenuItem";
-            this.searchtoolStripMenuItem.Size = new System.Drawing.Size(66, 26);
+            this.searchtoolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.searchtoolStripMenuItem.Text = "Поиск";
             // 
             // searchShipmentToolStripMenuItem
             // 
             this.searchShipmentToolStripMenuItem.Name = "searchShipmentToolStripMenuItem";
-            this.searchShipmentToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.searchShipmentToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.searchShipmentToolStripMenuItem.Text = "Найти отгрузку ";
             // 
             // найтиToolStripMenuItem
             // 
             this.найтиToolStripMenuItem.Name = "найтиToolStripMenuItem";
-            this.найтиToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.найтиToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.найтиToolStripMenuItem.Text = "Поиск карточки ";
             // 
             // filterToolStripMenuItemFilter
@@ -238,71 +249,81 @@ namespace Draft_Diamond_BD
             this.кольеToolStripMenuItem,
             this.брошьToolStripMenuItem});
             this.filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
-            this.filterToolStripMenuItemFilter.Size = new System.Drawing.Size(74, 26);
+            this.filterToolStripMenuItemFilter.Size = new System.Drawing.Size(60, 20);
             this.filterToolStripMenuItemFilter.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             this.весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            this.весьСкладToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.весьСкладToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // кольцоToolStripMenuItem
             // 
             this.кольцоToolStripMenuItem.Name = "кольцоToolStripMenuItem";
-            this.кольцоToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.кольцоToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.кольцоToolStripMenuItem.Text = "Кольцо";
             // 
             // серьгиToolStripMenuItem
             // 
             this.серьгиToolStripMenuItem.Name = "серьгиToolStripMenuItem";
-            this.серьгиToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.серьгиToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.серьгиToolStripMenuItem.Text = "Серьги";
             // 
             // браслетToolStripMenuItem
             // 
             this.браслетToolStripMenuItem.Name = "браслетToolStripMenuItem";
-            this.браслетToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.браслетToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.браслетToolStripMenuItem.Text = "Браслет";
             // 
             // кольеToolStripMenuItem
             // 
             this.кольеToolStripMenuItem.Name = "кольеToolStripMenuItem";
-            this.кольеToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.кольеToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.кольеToolStripMenuItem.Text = "Колье";
             // 
             // брошьToolStripMenuItem
             // 
             this.брошьToolStripMenuItem.Name = "брошьToolStripMenuItem";
-            this.брошьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.брошьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.брошьToolStripMenuItem.Text = "Брошь";
             // 
             // exitToolStripMenuItemOutput
             // 
             this.exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            this.exitToolStripMenuItemOutput.Size = new System.Drawing.Size(67, 26);
+            this.exitToolStripMenuItemOutput.Size = new System.Drawing.Size(54, 20);
             this.exitToolStripMenuItemOutput.Text = "Выход";
+            // 
+            // changeAccountToolStripMenuItem
+            // 
+            this.changeAccountToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.changeAccountToolStripMenuItem.Name = "changeAccountToolStripMenuItem";
+            this.changeAccountToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
+            this.changeAccountToolStripMenuItem.Text = "Сменить аккаунт";
+            this.changeAccountToolStripMenuItem.Click += new System.EventHandler(this.changeAccountToolStripMenuItem_Click);
             // 
             // labelLogin
             // 
             this.labelLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLogin.AutoSize = true;
             this.labelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLogin.Location = new System.Drawing.Point(643, 3);
+            this.labelLogin.Location = new System.Drawing.Point(519, 0);
             this.labelLogin.Margin = new System.Windows.Forms.Padding(5);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Padding = new System.Windows.Forms.Padding(2);
-            this.labelLogin.Size = new System.Drawing.Size(68, 29);
+            this.labelLogin.Size = new System.Drawing.Size(55, 24);
             this.labelLogin.TabIndex = 2;
             this.labelLogin.Text = "label1";
             // 
             // buttonHistoryShipment
             // 
-            this.buttonHistoryShipment.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonHistoryShipment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonHistoryShipment.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonHistoryShipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonHistoryShipment.Location = new System.Drawing.Point(423, 75);
+            this.buttonHistoryShipment.Location = new System.Drawing.Point(436, 85);
             this.buttonHistoryShipment.Name = "buttonHistoryShipment";
+            this.buttonHistoryShipment.Padding = new System.Windows.Forms.Padding(2);
+            this.buttonHistoryShipment.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.buttonHistoryShipment.Size = new System.Drawing.Size(284, 51);
             this.buttonHistoryShipment.TabIndex = 4;
             this.buttonHistoryShipment.Text = "История Отгрузок";
@@ -310,7 +331,7 @@ namespace Draft_Diamond_BD
             // 
             // WarehouseAdmin
             // 
-            this.ClientSize = new System.Drawing.Size(732, 422);
+            this.ClientSize = new System.Drawing.Size(732, 629);
             this.Controls.Add(this.buttonHistoryShipment);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelwarehouse);
@@ -324,5 +345,7 @@ namespace Draft_Diamond_BD
             this.PerformLayout();
 
         }
+
+        
     }
 }

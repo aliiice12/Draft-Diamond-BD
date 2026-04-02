@@ -29,5 +29,6 @@
         private System.Windows.Forms.ToolStripMenuItem найтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteCardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeAccountToolStripMenuItem;
     }
 }

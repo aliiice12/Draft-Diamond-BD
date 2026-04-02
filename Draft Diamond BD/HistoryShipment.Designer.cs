@@ -38,11 +38,11 @@
             // 
             // labelHistoryShipment
             // 
-            this.labelHistoryShipment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelHistoryShipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelHistoryShipment.Location = new System.Drawing.Point(12, 43);
+            this.labelHistoryShipment.Location = new System.Drawing.Point(9, 78);
+            this.labelHistoryShipment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelHistoryShipment.Name = "labelHistoryShipment";
-            this.labelHistoryShipment.Size = new System.Drawing.Size(186, 84);
+            this.labelHistoryShipment.Size = new System.Drawing.Size(140, 68);
             this.labelHistoryShipment.TabIndex = 0;
             this.labelHistoryShipment.Text = "История отгрузок:";
             // 
@@ -54,42 +54,45 @@
             this.searchtoolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(732, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // searchtoolStripMenuItem
             // 
             this.searchtoolStripMenuItem.Name = "searchtoolStripMenuItem";
-            this.searchtoolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.searchtoolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.searchtoolStripMenuItem.Text = "Поиск";
             // 
             // buttonListProduct
             // 
-            this.buttonListProduct.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonListProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonListProduct.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonListProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonListProduct.Location = new System.Drawing.Point(558, 60);
+            this.buttonListProduct.Location = new System.Drawing.Point(549, 92);
+            this.buttonListProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonListProduct.Name = "buttonListProduct";
-            this.buttonListProduct.Size = new System.Drawing.Size(230, 67);
+            this.buttonListProduct.Size = new System.Drawing.Size(172, 54);
             this.buttonListProduct.TabIndex = 2;
             this.buttonListProduct.Text = "Список товаров";
             this.buttonListProduct.UseVisualStyleBackColor = false;
             // 
             // HistoryShipment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(732, 453);
             this.Controls.Add(this.buttonListProduct);
             this.Controls.Add(this.labelHistoryShipment);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "HistoryShipment";
             this.Text = "HistoryShipment";
             this.menuStrip1.ResumeLayout(false);

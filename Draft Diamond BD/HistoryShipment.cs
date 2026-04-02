@@ -23,10 +23,12 @@ namespace Draft_Diamond_BD
         {
             dgvHistory = new DataGridView
             {
-                Location = new System.Drawing.Point(90, 320),
-                Size = new System.Drawing.Size(860, 500),
+                Location = new System.Drawing.Point(10, 150),
+                Size = new System.Drawing.Size(700, 250),
+                Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
             };
 
             Controls.Add(dgvHistory);
@@ -39,35 +41,42 @@ namespace Draft_Diamond_BD
         }
         private void SearchtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var searchform = new SearchCard();
-            searchform.Show();
+            var searchShipment = new SearchShipment();
+            searchShipment.Show();
             Hide();
         }
         private void LoadHistory()
         {
-            using (var db = new DBShipment())
+            using (var db = new DBShipmentBasket())
             {
-                dgvHistory.AutoGenerateColumns = true;
-                dgvHistory.DataSource = db.Shipments.ToList();
-
-                if (dgvHistory.Columns["Id"] != null)
-                    dgvHistory.Columns["Id"].HeaderText = "ID отгрузки";
-
-                if (dgvHistory.Columns["Name"] != null)
-                    dgvHistory.Columns["Name"].HeaderText = "Название";
-
-                if (dgvHistory.Columns["Unit"] != null)
-                    dgvHistory.Columns["Unit"].HeaderText = "Ед. изм.";
-
-                if (dgvHistory.Columns["Quantity"] != null)
-                    dgvHistory.Columns["Quantity"].HeaderText = "Количество";
-
-                if (dgvHistory.Columns["Destination"] != null)
-                    dgvHistory.Columns["Destination"].HeaderText = "Куда";
-
-                if (dgvHistory.Columns["Recipient"] != null)
-                    dgvHistory.Columns["Recipient"].HeaderText = "Кому";
+                dgvHistory.DataSource = db.Shipments.Select(p => new
+                {
+                    p.Name,
+                    p.Unit,
+                    p.Quantity,
+                    p.Destination,
+                    p.Recipient,
+                }).ToList();
+                SetupColumns();
             }
+        }
+        private void SetupColumns()
+        {
+
+            if (dgvHistory.Columns["Name"] != null)
+                dgvHistory.Columns["Name"].HeaderText = "Название";
+
+            if (dgvHistory.Columns["Unit"] != null)
+                dgvHistory.Columns["Unit"].HeaderText = "Ед. изм.";
+
+            if (dgvHistory.Columns["Quantity"] != null)
+                dgvHistory.Columns["Quantity"].HeaderText = "Количество";
+
+            if (dgvHistory.Columns["Destination"] != null)
+                dgvHistory.Columns["Destination"].HeaderText = "Куда";
+
+            if (dgvHistory.Columns["Recipient"] != null)
+                dgvHistory.Columns["Recipient"].HeaderText = "Кому";
         }
     }
 }

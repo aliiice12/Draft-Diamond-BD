@@ -22,6 +22,7 @@ namespace Draft_Diamond_BD.DataBaseProducts
             {
                 entity.HasKey(p => p.Id);
                 entity.Property(p => p.Name);
+                entity.Property(p => p.uniteOfMeasure);
                 entity.Property(p => p.Count);
                 entity.Property(p => p.Price);
                 entity.Property(p => p.Rest);
