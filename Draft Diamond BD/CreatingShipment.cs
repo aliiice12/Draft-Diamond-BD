@@ -72,6 +72,7 @@ namespace Draft_Diamond_BD
                     row.Cells["Кто создал"].Value = userLogin; 
             }
         }
+        //вот здесь выпадающие списки надо реализовать 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             var name = textBoxTitle.Text.Trim();
@@ -122,7 +123,6 @@ namespace Draft_Diamond_BD
             MessageBox.Show(Resources.InformationSuccess, Resources.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-        //вот здесь выпадающие списки надо реализовать 
         private void buttonShipment_Click(object sender, EventArgs e)
         {
             using (var dataSource = new DBShipmentBasket())

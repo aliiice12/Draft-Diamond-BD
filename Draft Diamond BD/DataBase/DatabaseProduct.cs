@@ -48,6 +48,7 @@ namespace Draft_Diamond_BD
                         p.Id,
                         p.Name,
                         p.Count,
+                        p.uniteOfMeasure,
                         p.Price,
                         p.Rest
                     })
@@ -94,6 +95,7 @@ namespace Draft_Diamond_BD
             {
                 dgvProducts.Columns["Id"].HeaderText = "ID";
                 dgvProducts.Columns["Name"].HeaderText = "Название";
+                dgvProducts.Columns["uniteOfMeasure"].HeaderText = "Ед.измерения";
                 dgvProducts.Columns["Count"].HeaderText = "Количество";
                 dgvProducts.Columns["Price"].HeaderText = "Цена";
                 dgvProducts.Columns["Rest"].HeaderText = "Остаток";
@@ -111,11 +113,11 @@ namespace Draft_Diamond_BD
                 {
                     db.Products.AddRange(new Product[]
                     {
-                        new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, Price = 45000m, Rest = 800 },
-                        new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, Price = 12000m, Rest = 2500 },
-                        new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, Price = 35000m, Rest = 1200 },
-                        new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, Price = 18500m, Rest = 300 },
-                        new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, Price = 5000m, Rest = 800 },
+                        new Product { Id = Guid.NewGuid(), Name = "Кольцо", Count = 15, uniteOfMeasure = UniteOfMeasure.Unit, Price = 45000m, Rest = 800 },
+                        new Product { Id = Guid.NewGuid(), Name = "Серьги", Count = 30, uniteOfMeasure = UniteOfMeasure.Unit, Price = 12000m, Rest = 2500 },
+                        new Product { Id = Guid.NewGuid(), Name = "Колье", Count = 20, uniteOfMeasure = UniteOfMeasure.Unit, Price = 35000m, Rest = 1200 },
+                        new Product { Id = Guid.NewGuid(), Name = "Браслет", Count = 8, uniteOfMeasure = UniteOfMeasure.Unit, Price = 18500m, Rest = 300 },
+                        new Product { Id = Guid.NewGuid(), Name = "Брошь", Count = 100, uniteOfMeasure = UniteOfMeasure.Unit, Price = 5000m, Rest = 800 },
                     });
                     db.SaveChanges();
                 }
@@ -129,9 +131,9 @@ namespace Draft_Diamond_BD
         {
             dgvProducts.DataSource = products.Select(p => new
             {
-                
                 p.Name,
                 p.Count,
+                p.uniteOfMeasure,
                 p.Price,
                 p.Rest
             }).ToList();
