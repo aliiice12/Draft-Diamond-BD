@@ -1,8 +1,10 @@
 ﻿using Draft_Diamond_BD.DataBase;
 using Draft_Diamond_BD.DataBaseProducts;
+using Draft_Diamond_BD.Products;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 namespace Draft_Diamond_BD
 {
@@ -133,16 +135,24 @@ namespace Draft_Diamond_BD
                     MessageBox.Show("Нет данных");
                     return;
                 }
-                for (var i = 0; i < allProductsInBasket.Count; i++)
-                {
-                    using (var dataSource2 = new DBProducts())
-                    {
-                        var products = dataSource2.Products.FirstOrDefault(p => p.Id == allProductsInBasket[i].Id);
-                        products.Count = products.Count - allProductsInBasket[i].Quantity;
 
-                        dataSource2.SaveChanges();
-                    }
+                var Sb = new StringBuilder();
+                foreach (var i in allProductsInBasket)
+                {
+                    Sb.Append(i.Id + " " + i.Name + " " + i.Quantity + "\n");
                 }
+                MessageBox.Show(Sb.ToString());
+                //for (var i = 0; i < allProductsInBasket.Count; i++)
+                //{
+                //    using (var dataSource2 = new DBProducts())
+                //    {
+                //        var products = dataSource2.Products.FirstOrDefault(p => p.Id == allProductsInBasket[i].Id);
+                //        MessageBox.Show($"{allProductsInBasket[i].Id},{products.Id}");
+                //        products.Count = products.Count - allProductsInBasket[i].Quantity;
+
+                //        dataSource2.SaveChanges();
+                //    }
+                //}
             }
         }
         private void InitializeComponent()
